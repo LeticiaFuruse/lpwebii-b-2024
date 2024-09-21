@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categoria', function (Blueprint $table) {
-            $table->id();
+            $table->id(); //inteiro - primary key - autoinc
             $table->string('cat_nome');
+            $table->string('cat_descricao')->nullable(); //nullable() siginifica que não é campo obrigatorio
+            $table->boolean('cat_ativo')->default(1); //default serve para tornar ativo ou inativo (para não usar DELETE)
+             
             $table->timestamps();
         });
     }
