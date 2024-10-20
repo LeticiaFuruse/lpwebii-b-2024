@@ -8,6 +8,9 @@ class Cargos extends Model
 {
     use HasFactory;
     protected $table = "cargo";
-    protected $fillable = ['cargo_nome'];
+    protected $fillable = ['cargo_nome', "cargo_descricao"];
 
+    public function usuario(){
+        return $this->hasMany(Usuario::class, "cargo_id");
+    }
 }
