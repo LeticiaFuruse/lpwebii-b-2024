@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('projeto_id');
             $table->foreign('projeto_id')->references('id')->on('projeto')->onDelete('cascade');
 
-            $table->timestamps();
-
+            $table->primary(['usuario_id', 'projeto_id']);
 
 
         });
