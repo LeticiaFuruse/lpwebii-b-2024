@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projeto', function (Blueprint $table) {
+        Schema::create('meta', function (Blueprint $table) {
             $table->id();
-            $table->string('projeto_nome');
-            $table->string('projeto_descricao')->nullable();
-            $table->string('projeto_status')->nullable();
-            $table->datetime('projeto_data_inicio')->nullable(); 
-            $table->datetime('projeto_data_fim')->nullable();
-
+            $table->foreignId("projeto_id")->constrained("projeto")->onDelete("cascade");
+            $table->string('meta_descricao');
+            $table->string('meta_titulo');
+            $table->dateTime('meta_prazo');
+            $table->string('meta_status');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projeto');
+        Schema::dropIfExists('meta');
     }
 };
