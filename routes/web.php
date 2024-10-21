@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cargoController;
+use App\Http\Controllers\projetoController;
 use App\Http\Controllers\usuarioController;
 
 Route::get("/",  function(){
@@ -25,3 +26,10 @@ Route::post("/usuario", [usuarioController::class, 'SalvarNovoUsuario']);
 Route::get("/usuario/upd/{id}" , [usuarioController::class, 'AlterarUsuario'])->name("usuario_alterar");
 Route::get("/usuario/exc/{id}" , [usuarioController::class, 'ExcluirUsuario'])->name("usuario_excluir");
 Route::post("/usuario/upd" , [usuarioController::class, 'SalvarAlteracao'])->name("usuario_alt_salva");
+
+
+//rota projeto 
+Route::get("/projeto", [projetoController::class, 'index'])->name("projeto_index");
+
+Route::get("/projeto/upd/{id}" , [projetoController::class, 'AlterarProjeto'])->name("projeto_alterar");
+Route::get("/projeto/exc/{id}" , [projetoController::class, 'ExcluirProjeto'])->name("projeto_excluir");
