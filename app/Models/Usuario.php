@@ -12,4 +12,9 @@ class Usuario extends Model
     public function cargo(){
         return $this->belongsTo(Cargos::class, "cargo_id");
     }
+
+    public function projetos(){
+        return $this->belongsToMany(Projeto::class, 'usuario_projeto', "usuario_id", "projeto_id");
+    }
+    
 }
