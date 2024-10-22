@@ -1,10 +1,20 @@
-## Aula 08 - 20/09/2024
+## Projeto Larave - 25/10/2024
 
 - CRUD
 
 # Projeto com CRUD 
-    - tabela Categoria 
-    - tabela Produto
+    - tabela Cargo
+    - tabela Usuario
+    - tabela Projeto
+    - tabela Metas
+    - tabela Tarefas
+    - tabela Colaborador
+# Admin - template
+    - todas as tabelas do administrador 
+# Cliente - template 
+    - site funcionando com: Criação de login 
+                            Criação de projetos 
+                            Criação de tarefas e metasd dentro do Projeto
 
 # Configurações 
     - Banco de Dados
