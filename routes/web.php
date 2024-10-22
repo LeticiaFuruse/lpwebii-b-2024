@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cargoController;
+use App\Http\Controllers\metaController;
 use App\Http\Controllers\projetoController;
 use App\Http\Controllers\usuarioController;
 
@@ -35,3 +36,6 @@ Route::post("/projeto", [projetoController::class, 'SalvarNovoProjeto']);
 Route::get("/projeto/upd/{id}" , [projetoController::class, 'AlterarProjeto'])->name("projeto_alterar");
 Route::get("/projeto/exc/{id}" , [projetoController::class, 'ExcluirProjeto'])->name("projeto_excluir");
 Route::post("/projeto/upd" , [projetoController::class, 'SalvarAlteracao'])->name("projeto_alt_salva");
+
+//rota do Metas 
+Route::get("/meta", [metaController::class, 'index'])->name("meta_index");
