@@ -40,8 +40,7 @@
                         {{-- ajuda do gpt --}}
 
                         @foreach ($usuarios as $item)
-                            @if (
-                                $projeto->usuario->contains(function ($usuario) use ($item) {
+                            @if ($projeto->usuario->contains(function ($usuario) use ($item) {
                                     return $usuario->id === $item->id;
                                 }))
                             

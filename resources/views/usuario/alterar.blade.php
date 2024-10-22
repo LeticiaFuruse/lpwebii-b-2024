@@ -18,32 +18,41 @@
                     @csrf <!-- Sempre colocar quando usar forms-->
 
                     <input type="hidden" name="id" value="{{$usuario_alterar->id}}">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="usuario_nome" value="{{$usuario_alterar->usuario_nome}}">
-                            <label for="floatingInput">Nome do usuario</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="usuario_email" value="{{$usuario_alterar->usuario_email}}">
-                            <label for="floatingInput">Email do usuario</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="usuario_senha" value="{{$usuario_alterar->usuario_senha}}">
-                            <label for="floatingInput">Senha do usuario</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="usuario_nome" value="{{$usuario_alterar->usuario_nome}}">
+                        <label for="floatingInput">Nome do usuario</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="usuario_email" value="{{$usuario_alterar->usuario_email}}">
+                        <label for="floatingInput">Email do usuario</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="usuario_senha" value="{{$usuario_alterar->usuario_senha}}">
+                        <label for="floatingInput">Senha do usuario</label>
+                    </div>
 
-                        <div class="form-floating mb-3">
-                            <select class="form-select" aria-label="Default select example" name="cargo_id">
-                                <option value="0">Selecione um cargo</option>
-                                @foreach ($cargo_alterar as $item)
-                                    <option value="{{ $item->id }}">{{ $item->cargo_nome }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" aria-label="Default select example" name="cargo_id">
+
+                            @foreach ($cargo_alterar as $item)
+                                @if ($usuario_alterar->cargo_id === $item->id)
+                                    <option value="{{ $item->id }}" selected>
+                                        {{ $item->cargo_nome }}
+                                    </option>
+                                @else
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->cargo_nome }}
+                                    </option>
+                                @endif
+                            @endforeach
+
+                        </select>
+                    </div>
 
                     <div class="row">
                         <div clas="col-md-4">
                             <input type="submit" class="btn btn-success" value="Alterar">
-                        
+
                         </div>
                     </div>
                 </form>
