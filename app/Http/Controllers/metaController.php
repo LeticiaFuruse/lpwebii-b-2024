@@ -12,7 +12,7 @@ class metaController extends Controller
     public function index(){
         $projeto = Projeto::all();
         $meta = Meta::with('projeto')->get();
-        $tarefa = Tarefa::with('meta')->get();
+        $tarefa = Meta::with('tarefa')->get();
         
         return view('metas.index', compact('meta', 'projeto', 'tarefa'));
 
@@ -33,7 +33,9 @@ class metaController extends Controller
         $meta->save();
 
         $tarefa_id = $request->input('tarefa_id');
-        
+
+        // $meta->tarefa()->attach($tarefa_id);
+
         return redirect('/metas');
 
     }
