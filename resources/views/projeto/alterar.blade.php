@@ -44,6 +44,7 @@
                                 $projeto->usuario->contains(function ($usuario) use ($item) {
                                     return $usuario->id === $item->id;
                                 }))
+                            
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
                                         name="usuario_id[]" checked>
@@ -51,6 +52,7 @@
                                         {{ $item->usuario_nome }}
                                     </label>
                                 </div>
+                        
                             @else
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
