@@ -40,13 +40,13 @@
                                 <td>{{ $linha->cargo->cargo_nome }}</td>
                                 <td>
 
-                                    <a href="{{ route('usuario_alterar', ["id"=>$linha->id]) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('usuario_alterar', ['id'=>$linha->id]) }}" class="btn btn-primary btn-sm">
                                         <i class="fa fa-pencil"> </i>
                                     </a>
 
                                     |
                                     
-                                    <a href='{{ route('usuario_excluir', ["id"=>$linha->id ]) }}' class="btn btn-danger btn-sm">
+                                    <a href="{{ route('usuario_excluir', ['id'=>$linha->id ]) }}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"> </i>
                                     </a>
 

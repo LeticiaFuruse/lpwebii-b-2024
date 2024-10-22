@@ -58,7 +58,7 @@
                                     <a class="nav-link" href="/cargo">Cargo</a>
                                     <a class="nav-link" href="/usuario">Usuario</a>
                                     <a class="nav-link" href="/projeto">Projeto</a>
-                                    <a class="nav-link" href="/">Metas</a>
+                                    <a class="nav-link" href="/metas">Metas</a>
                                     <a class="nav-link" href="/">Tarefa</a>
                                     <a class="nav-link" href="/">Colaborador</a>
                                 </nav>

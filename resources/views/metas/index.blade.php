@@ -2,68 +2,69 @@
 
 @section('conteudo')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Projeto</h1>
+        <h1 class="mt-4">Metas</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Listagem de Projetos</li>
+            <li class="breadcrumb-item active">Listagem de Metas</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Pesquisa de Projetos
+                Pesquisa de Metas
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Novo
-                            Projeto</a>
+                        <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Nova
+                            Meta</a>
                     </div>
                 </div>
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome do projeto </th>
-                            <th>Usuario</th>
+                            <th>Titulo da meta </th>
+                            <th>Projeto</th>
                             <th>Descrição</th>
+                            <th>Tarefas</th>
                             <th>Status</th>
-                            <th>Data do inicio </th>
-                            <th>Data do fim </th>
+                            <th>Prazo </th>
                             <th>Opções</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($projeto as $linha)
+                        @foreach ($meta as $linha)
+                            
                             <tr>
                                 <td>{{ $linha->id }}</td>
-                                <td>{{ $linha->projeto_nome }}</td>
-
+                                <td>{{ $linha->meta_titulo }}</td>
+                                <td>{{ $linha->projeto->projeto_nome }}</td>
+                                <td>{{ $linha->meta_descricao }}</td>
                                 <td>
-                                    @foreach ($linha->usuario as $usuario)
-                                        {{ $usuario->usuario_nome }} <br>
+                                    @foreach ($tarefa as $tarefas)
+                                        {{ $tarefas->tarefa_titulo }} <br>
                                     @endforeach
                                 </td>
-                                
-                                <td>{{ $linha->projeto_descricao }}</td>
-                                <td>{{ $linha->projeto_status }}</td>
-                                <td>{{ $linha->projeto_data_inicio }}</td>
-                                <td>{{ $linha->projeto_data_fim }}</td>
+                                <td>{{ $linha->meta_status }}</td>
+                                <td>{{ $linha->meta_prazo }}</td>
+
                                 <td>
 
-                                    <a href="{{ route('projeto_alterar', ['id' => $linha->id]) }}"
+                                    <a href="{{ route('meta_alterar', ['id' => $linha->id]) }}"
                                         class="btn btn-primary btn-sm">
                                         <i class="fa fa-pencil"> </i>
                                     </a>
 
                                     |
 
-                                    <a href='{{ route('projeto_excluir', ['id' => $linha->id]) }}'
+                                    <a href="{{ route('meta_excluir', ['id' => $linha->id]) }}"
                                         class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"> </i>
                                     </a>
 
                                 </td>
                             </tr>
+                            
                         @endforeach
                     </tbody>
                 </table>
@@ -76,45 +77,48 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <form action="/projeto" method="POST">
+                <form action="/metas" method="POST">
                     @csrf <!-- Sempre colocar quando usar forms-->
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de novo Projeto</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro de nova Meta</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="projeto_nome">
-                            <label for="floatingInput">Nome do projeto</label>
+                            <input type="text" class="form-control" name="meta_titulo">
+                            <label for="floatingInput">Titulo da meta</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" aria-label="Default select example" name="projeto_id">
+                                <option value="0">Selecione um projeto</option>
+                                @foreach ($projeto as $item)
+                                    <option value="{{ $item->id }}">{{ $item->projeto_nome }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <label for="floatingInput">Selecione um colaborador</label>
-                            @foreach ($usuarios as $item)
+                        <label for="floatingInput">Selecione a(s) tarefa(s)</label>
+                            @foreach ($tarefa as $item)
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="usuario_id[]">
+                                <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="tarefa_id[]">
                                 <label class="form-check-label" value="{{ $item->id }}">
                                     
-                                    {{ $item->usuario_nome }}
+                                    {{ $item->tarefa_titulo }}
                                 </label>
                             </div>
                             @endforeach
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="projeto_descricao">
+                            <input type="text" class="form-control" name="meta_descricao">
                             <label for="floatingInput">Descrição</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="projeto_status">
+                            <input type="text" class="form-control" name="meta_status">
                             <label for="floatingInput">Status</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="projeto_data_inicio">
-                            <label for="floatingInput">Data inicio</label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="projeto_data_fim">
-                            <label for="floatingInput">Data fim</label>
+                            <input type="date" class="form-control" name="meta_prazo">
+                            <label for="floatingInput">Prazo</label>
                         </div>
                        
 
