@@ -57,7 +57,7 @@
 
                                     |
 
-                                    <a href='{{ route('projeto_excluir', ['id' => $linha->id]) }}'
+                                    <a href="{{ route('projeto_excluir', ['id' => $linha->id]) }}"
                                         class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"> </i>
                                     </a>
