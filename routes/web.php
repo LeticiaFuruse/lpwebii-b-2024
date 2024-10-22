@@ -28,8 +28,10 @@ Route::get("/usuario/exc/{id}" , [usuarioController::class, 'ExcluirUsuario'])->
 Route::post("/usuario/upd" , [usuarioController::class, 'SalvarAlteracao'])->name("usuario_alt_salva");
 
 
-//rota projeto 
+//rota Projeto 
 Route::get("/projeto", [projetoController::class, 'index'])->name("projeto_index");
+Route::post("/projeto", [projetoController::class, 'SalvarNovoProjeto']);
 
 Route::get("/projeto/upd/{id}" , [projetoController::class, 'AlterarProjeto'])->name("projeto_alterar");
 Route::get("/projeto/exc/{id}" , [projetoController::class, 'ExcluirProjeto'])->name("projeto_excluir");
+Route::post("/projeto/upd" , [projetoController::class, 'SalvarAlteracao'])->name("projeto_alt_salva");
