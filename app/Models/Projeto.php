@@ -10,7 +10,8 @@ class Projeto extends Model
     protected $fillable = ['projeto_nome', 'projeto_descricao', 
     "projeto_status", "projeto_data_inicio", "projeto_data_fim"];
 
-    public function usuarios(){
-        return $this->belongsToMany(Usuario::class, 'usuario_projeto', 'projeto_id', 'usuario_id');
+    public function usuario(){
+        return $this->belongsToMany(Usuario::class, 'usuario_projeto');
     }
+ 
 }

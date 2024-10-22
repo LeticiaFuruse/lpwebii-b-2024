@@ -23,7 +23,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nome do projeto </th>
-                            <th>Colaborador</th>
+                            <th>Usuario</th>
                             <th>Descrição</th>
                             <th>Status</th>
                             <th>Data do inicio </th>
@@ -37,7 +37,12 @@
                             <tr>
                                 <td>{{ $linha->id }}</td>
                                 <td>{{ $linha->projeto_nome }}</td>
-                                <td>{{ $linha->projeto_colaborador }}</td>
+
+                                <td>
+                                    @foreach ($linha->usuario as $usuario)
+                                        {{ $usuario->usuario_nome }} <br>
+                                    @endforeach
+                                </td>
                                 <td>{{ $linha->projeto_descricao }}</td>
                                 <td>{{ $linha->projeto_status }}</td>
                                 <td>{{ $linha->projeto_data_inicio }}</td>
@@ -70,7 +75,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <form action="/usuario" method="POST">
+                <form action="/projeto" method="POST">
                     @csrf <!-- Sempre colocar quando usar forms-->
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Cadastro de novo Projeto</h5>
@@ -81,31 +86,36 @@
                             <input type="text" class="form-control" name="projeto_nome">
                             <label for="floatingInput">Nome do projeto</label>
                         </div>
+
+                        <label for="floatingInput">Selecione um colaborador</label>
+                            @foreach ($usuarios as $item)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="usuario_id[]">
+                                <label class="form-check-label" value="{{ $item->id }}">
+                                    
+                                    {{ $item->usuario_nome }}
+                                </label>
+                            </div>
+                            @endforeach
+
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="projeto_descricao">
                             <label for="floatingInput">Descrição</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="projeto_status">
+                            <input type="text" class="form-control" name="projeto_status">
                             <label for="floatingInput">Status</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="projeto_data_inicio">
+                            <input type="date" class="form-control" name="projeto_data_inicio">
                             <label for="floatingInput">Data inicio</label>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="projeto_data_fim">
-                            <label for="floatingInput">Status do projeto</label>
+                            <input type="date" class="form-control" name="projeto_data_fim">
+                            <label for="floatingInput">Data fim</label>
                         </div>
-                        {{-- <div class="form-floating mb-3">
-                            <select class="form-select" aria-label="Default select example" name="cargo_id">
-                                <option value="0">Selecione um cargo</option>
-                                @foreach ($cargo as $item)
-                                    <option value="{{ $item->id }}">{{ $item->cargo_nome }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
+                       
 
                     </div>
                     <div class="modal-footer">
