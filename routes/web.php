@@ -37,5 +37,11 @@ Route::get("/projeto/upd/{id}" , [projetoController::class, 'AlterarProjeto'])->
 Route::get("/projeto/exc/{id}" , [projetoController::class, 'ExcluirProjeto'])->name("projeto_excluir");
 Route::post("/projeto/upd" , [projetoController::class, 'SalvarAlteracao'])->name("projeto_alt_salva");
 
+
 //rota do Metas 
-Route::get("/meta", [metaController::class, 'index'])->name("meta_index");
+Route::get("/metas", [metaController::class, 'index'])->name("meta_index");
+Route::post("/metas", [metaController::class, 'SalvarNovaMeta']);
+
+Route::get("/metas/upd/{id}" , [metaController::class, 'AlterarMeta'])->name("meta_alterar");
+Route::get("/metas/exc/{id}" , [metaController::class, 'ExcluirMeta'])->name("meta_excluir");
+Route::post("/metas/upd" , [metaController::class, 'SalvarAlteracao'])->name("meta_alt_salva");
