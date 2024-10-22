@@ -13,8 +13,8 @@ class metaController extends Controller
         $projeto = Projeto::all();
         $meta = Meta::with('projeto')->get();
         $tarefa = Meta::with('tarefa')->get();
-        
-        return view('metas.index', compact('meta', 'projeto', 'tarefa'));
+     
+        return view('metas.index', compact('meta', 'projeto'));
 
     }
     public function SalvarNovaMeta(Request $request){

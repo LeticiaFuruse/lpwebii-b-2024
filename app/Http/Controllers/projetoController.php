@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class projetoController extends Controller
 {
     public function index(){
-        $projeto = Projeto::with(['usuario'])->get();
+        $projeto = Projeto::with(['usuario', 'meta.tarefa'])->get();
         $usuarios = Usuario::all();
         
         return view('projeto.index', compact('projeto', 'usuarios'));

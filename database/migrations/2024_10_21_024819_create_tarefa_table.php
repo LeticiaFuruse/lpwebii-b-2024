@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tarefa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("meta_id")->constrained("meta")->onDelete("cascade")->nullable();
+            $table->foreignId("meta_id")->nullable()->constrained("meta")->onDelete("cascade");
             $table->foreignId("projeto_id")->constrained("projeto")->onDelete("cascade");
             $table->string('tarefa_titulo');
             $table->string('tarefa_descricao')->nullable();

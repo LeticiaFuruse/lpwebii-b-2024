@@ -41,8 +41,8 @@
                         <td>{{ $linha->projeto->projeto_nome }}</td>
                         <td>{{ $linha->meta_descricao }}</td>
                         <td>
-                            @foreach ($tarefa as $tarefas)
-                                {{ $tarefas->tarefa_titulo }} <br>
+                            @foreach ($linha->tarefas as $tarefa)
+                                {{ $tarefa->tarefa_titulo }} <br>
                             @endforeach
                         </td>
 

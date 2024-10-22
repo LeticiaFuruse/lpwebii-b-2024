@@ -19,5 +19,6 @@ class Projeto extends Model
     public function tarefa(){
         return $this->hasMany(Tarefa::class, 'projeto_id');
     }
+
  
 }

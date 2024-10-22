@@ -16,4 +16,12 @@ class Meta extends Model
     public function tarefa(){
         return $this->hasMany(Tarefa::class, 'meta_id');
     }
+
+
+
+    // //gpt 
+    // public function tarefas() // Alterado para 'tarefas'
+    // {
+    //     return $this->hasMany(Tarefa::class, 'meta_id');
+    // }
 }
