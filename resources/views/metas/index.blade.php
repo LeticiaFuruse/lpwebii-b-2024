@@ -41,7 +41,7 @@
                         <td>{{ $linha->projeto->projeto_nome }}</td>
                         <td>{{ $linha->meta_descricao }}</td>
                         <td>
-                            @foreach ($linha->tarefas as $tarefa)
+                            @foreach ($linha->tarefa as $tarefa)
                                 {{ $tarefa->tarefa_titulo }} <br>
                             @endforeach
                         </td>
@@ -99,14 +99,17 @@
                     </div>
 
                     <label for="floatingInput">Selecione a(s) tarefa(s)</label>
-                    @foreach ($tarefa as $item)
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="tarefa_id[]">
-                        <label class="form-check-label" value="{{ $item->id }}">
+                    @foreach ($tarefa_all as $item)
+                        @if ($item->meta_id == null)
+                            
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ $item->id }}" name="tarefa_id[]">
+                            <label class="form-check-label" value="{{ $item->id }}">
 
-                            {{ $item->tarefa_titulo }}
-                        </label>
-                    </div>
+                                {{ $item->tarefa_titulo }}
+                            </label>
+                        </div>
+                        @endif
                     @endforeach
 
                     <div class="form-floating mb-3">

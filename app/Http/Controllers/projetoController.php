@@ -58,7 +58,7 @@ class projetoController extends Controller
         $projeto->projeto_data_fim = $projeto_data_fim;
     
         $projeto->save();
-        $projeto->usuario()->sync   ($usuario_id);
+        $projeto->usuario()->sync($usuario_id);
         return redirect('/projeto');
         
     }
