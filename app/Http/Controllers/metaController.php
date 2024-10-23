@@ -21,20 +21,16 @@ class metaController extends Controller
         $meta_titulo = $request->input('meta_titulo'); 
         $meta_descricao = $request->input('meta_descricao');
         $meta_status = $request->input('meta_status');
-        $meta_prazo = $request->input('meta_prazo');
-        
+        $meta_prazo = $request->input('meta_prazo');       
         $projeto_id = $request->input('projeto_id');     
-        $meta = new Meta();
-          
+        $meta = new Meta();         
         $meta->meta_titulo = $meta_titulo;
         $meta->projeto_id = $projeto_id;
         $meta->meta_descricao = $meta_descricao;
         $meta->meta_status = $meta_status;
         $meta->meta_prazo = $meta_prazo;
         $meta->save();
-
         $tarefa_ids = $request->input('tarefa_id');
-
         foreach ($tarefa_ids as $tarefa_id) {
             if ($tarefa = Tarefa::find($tarefa_id)) {
                 $tarefa->meta_id = $meta->id;
@@ -46,9 +42,14 @@ class metaController extends Controller
 
     public function ExcluirMeta($id){
         $meta_excluir = Meta::where("id", $id)->first();
-
         $meta_excluir->delete();
         return redirect('/metas');
+    }
+
+    public function AlterarMeta($id){
+        $meta = Meta::where("id", $id)->first();
+        $projeto = Projeto::all();
+        return view('metas.alterar', compact('meta', 'projeto'));
     }
 
 }
