@@ -18,14 +18,11 @@ class usuarioController extends Controller
         $usuarioEmail = $request->input('usuario_email');
         $usuarioSenha = $request->input('usuario_senha');
         $cargoId = $request->input('cargo_id');
-
         $usuario = new Usuario();
-
         $usuario->usuario_nome = $usuarioNome;
         $usuario->usuario_email = $usuarioEmail;
         $usuario->usuario_senha = $usuarioSenha;
         $usuario->cargo_id = $cargoId;
-
         $usuario->save();
         return redirect('/usuario');
     }
@@ -48,11 +45,8 @@ class usuarioController extends Controller
         $usuario_email = $request->input("usuario_email");
         $usuario_senha = $request->input("usuario_senha");
         $cargo_id = $request->input("cargo_id");
-
-
         $id = $request->input("id");
-        $usuario = Usuario::where("id", $id)->first();
-        
+        $usuario = Usuario::where("id", $id)->first();   
         $usuario->usuario_nome = $usuario_nome;
         $usuario->usuario_email = $usuario_email;
         $usuario->usuario_senha = $usuario_senha;

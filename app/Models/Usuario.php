@@ -16,5 +16,8 @@ class Usuario extends Model
     public function projeto(){
         return $this->belongsToMany(Projeto::class, 'usuario_projeto');
     }
+    public function colaborador(){
+        return $this->belongsTo(Colaborador::class, "usuario_id");
+    }
     
 }
