@@ -59,8 +59,8 @@
                                     <a class="nav-link" href="/usuario">Usuario</a>
                                     <a class="nav-link" href="/projeto">Projeto</a>
                                     <a class="nav-link" href="/metas">Metas</a>
-                                    <a class="nav-link" href="/">Tarefa</a>
-                                    <a class="nav-link" href="/">Colaborador</a>
+                                    <a class="nav-link" href="/tarefa">Tarefa</a>
+                                    <a class="nav-link" href="/colaborador">Colaborador</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
