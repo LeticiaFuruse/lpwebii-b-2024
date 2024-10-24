@@ -24,8 +24,6 @@
                         </div>
 
                         <label for="floatingInput">Selecione um colaborador</label>
-
-
                         {{-- @foreach ($usuarios as $item)
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
