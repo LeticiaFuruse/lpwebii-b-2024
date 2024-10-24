@@ -18,27 +18,44 @@
 
                         <input type="hidden" name="id" value="{{ $meta->id }}">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="meta_titulo"
-                                value="{{ $meta->meta_titulo }}">
+                            <input type="text" class="form-control" name="meta_titulo" value="{{ $meta->meta_titulo }}">
                             <label for="floatingInput">Nome da meta</label>
                         </div>
 
                         <label value="0" for="floatingInput">Selecione um projeto</label>
                         <div class="form-floating mb-3">
                             <select class="form-select" aria-label="Default select example" name="projeto_id">
-                                
+
                                 @foreach ($projeto as $item)
-                                    <option value="{{ $item->id }}" {{ $item->id == $meta->projeto_id ? 'selected' : '' }}>
+                                    <option value="{{ $item->id }}"
+                                        {{ $item->id == $meta->projeto_id ? 'selected' : '' }}>
                                         {{ $item->projeto_nome }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
-
                         <label for="floatingInput">Selecione uma tarefa</label>
+                        @foreach ($tarefa as $item)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
+                                    name="tarefa_id[]" @if ($item->meta) checked @endif>
+                                <label class="form-check-label" value="{{ $item->id }}">
+                                    {{ $item->tarefa_titulo }}
+                                </label>
+                            </div>
+                        @endforeach
 
-                        {{-- ajuda do gpt --}}
+                        {{-- nullish coalescing:
+                        @foreach ($tarefa as $item)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
+                                    name="tarefa_id[]" {{ $item->meta ? 'checked' : '' }}>
+                                <label class="form-check-label" value="{{ $item->id }}">
+                                    {{ $item->tarefa_titulo }}
+                                </label>
+                            </div>
+                        @endforeach --}}
 
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" name="meta_descricao"
@@ -46,14 +63,13 @@
                             <label for="floatingInput">Descrição</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="meta_status"
-                                value="{{ $meta->meta_status }}">
+                            <input type="text" class="form-control" name="meta_status" value="{{ $meta->meta_status }}">
                             <label for="floatingInput">Status</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <input type="date" class="form-control" name="meta_prazo"
-                                value="{{ substr($meta->meta_prazo,0, 10) }}">
+                                value="{{ substr($meta->meta_prazo, 0, 10) }}">
                             <label for="floatingInput">Data de entrega</label>
                         </div>
 

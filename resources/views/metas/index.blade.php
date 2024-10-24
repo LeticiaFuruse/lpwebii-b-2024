@@ -98,7 +98,7 @@
 
                         <label for="floatingInput">Selecione a(s) tarefa(s)</label> <br>
                         @if ($tarefa_all->isEmpty() || !$tarefa_all->contains('meta_id', null))
-                            <p>Não há nenhuma tarefa disponível.</p>
+                            <p class="text-gray-600">Não há nenhuma tarefa disponível.</p>
                         @else
                             @foreach ($tarefa_all as $item)
                                 @if ($item->meta_id == null)
