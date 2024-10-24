@@ -14,4 +14,7 @@ class Colaborador extends Model
     public function tarefa(){
         return $this->belongsToMany(Tarefa::class, 'colaborador_tarefa');
     }
+    public function usuario(){
+        return $this->belongsTo(Usuario::class, "usuario_id");
+    }
 }
