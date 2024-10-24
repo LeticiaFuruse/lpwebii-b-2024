@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cargoController;
+use App\Http\Controllers\colaboradorController;
 use App\Http\Controllers\metaController;
 use App\Http\Controllers\projetoController;
+use App\Http\Controllers\tarefaController;
 use App\Http\Controllers\usuarioController;
 
 Route::get("/",  function(){
@@ -45,3 +47,20 @@ Route::post("/metas", [metaController::class, 'SalvarNovaMeta']);
 Route::get("/metas/upd/{id}" , [metaController::class, 'AlterarMeta'])->name("meta_alterar");
 Route::get("/metas/exc/{id}" , [metaController::class, 'ExcluirMeta'])->name("meta_excluir");
 Route::post("/metas/upd" , [metaController::class, 'SalvarAlteracao'])->name("meta_alt_salva");
+
+
+//rota Tarefas 
+Route::get("/tarefa", [tarefaController::class, 'index'])->name("tarefa_index");
+Route::post("/tarefa", [tarefaController::class, 'SalvarNovaTarefa']);
+
+Route::get("/tarefa/upd/{id}", [tarefaController::class, 'AlterarTarefa'])->name("tarefa_alterar");
+Route::get("/tarefa/exc/{id}", [tarefaController::class, 'ExcluirTarefa'])->name("tarefa_excluir");
+Route::post("/tarefa/upd", [tarefaController::class, 'SalvarAlteracao'])->name("tarefa_alt_salva");
+
+//rota Colaborador 
+Route::get("/colaborador", [colaboradorController::class, 'index'])->name("colaborador_index");
+Route::post("/colaborador", [colaboradorController::class, 'SalvarNovoColaborador']);
+
+Route::get("/colaborador/upd/{id}", [colaboradorController::class, 'AlterarColaborador'])->name("colaborador_alterar");
+Route::get("/colaborador/exc/{id}", [colaboradorController::class, 'ExcluirColaborador'])->name("colaborador_excluir");
+Route::post("/colaborador/upd", [colaboradorController::class, 'SalvarAlteracao'])->name("colaborador_alt_salva");
