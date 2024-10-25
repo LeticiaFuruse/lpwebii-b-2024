@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('projeto_id')->references('id')->on('projeto')->onDelete('cascade');
 
             $table->primary(['usuario_id', 'projeto_id']);
-
+            $table->timestamps();
 
         });
     }

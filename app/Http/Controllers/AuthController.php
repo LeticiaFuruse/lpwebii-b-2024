@@ -39,7 +39,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirecionar ou retornar uma resposta
-        return redirect("/login")->with('success', 'Registro concluído com sucesso!');
+        return redirect()->route("login")->with('success', 'Registro concluído com sucesso!');
     }
     public function login(Request $request)
     {

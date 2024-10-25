@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign("tarefa_id")->references("id")->on('tarefa')->onDelete("cascade");
 
             $table->primary(['colaborador_id', 'tarefa_id']);
+            $table->timestamps();
         });
     }
 

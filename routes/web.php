@@ -10,23 +10,15 @@ use App\Http\Controllers\tarefaController;
 use App\Http\Controllers\usuarioController;
 
 Route::get("/",  function(){
-    return view("admin_template.index");
+    return view("cliente.register.index");
     
 });
-
-
 
 //rota de register do usuario 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post("/register", [AuthController::class, 'register']);
-
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/login', function (){
@@ -85,6 +77,4 @@ Route::middleware('auth')->group(function () {
     Route::get("/colaborador/exc/{id}", [colaboradorController::class, 'ExcluirColaborador'])->name("colaborador_excluir");
     Route::post("/colaborador/upd", [colaboradorController::class, 'SalvarAlteracao'])->name("colaborador_alt_salva");
 
-    //rotas que o usuario n precisa de login vem aqui embaixo
-    // Route::get('/categoria', [Categoria::class, 'index'])->name('categoria');
 });

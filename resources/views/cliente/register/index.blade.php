@@ -61,16 +61,18 @@
                                     <button class="btn btn-primary btn-user btn-block">
                                         Registrar conta
                                     </button>
+                                    
                                 <hr>
 
                             </form>
-                            <hr>
-                            {{-- <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div> --}}
+                            <a href="/login" class="text-white text-decoration-none">
+                            <button class="btn btn-primary btn-user btn-block" href="/login">Ja tenho uma conta</button>
+                            </a>
+                            
+                            
+                            
+                            
+                            
                         </div>
                     </div>
                 </div>

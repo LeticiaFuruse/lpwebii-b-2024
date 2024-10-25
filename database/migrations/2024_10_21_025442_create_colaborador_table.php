@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId("usuario_id")->constrained("usuario")->onDelete("cascade");
             $table->foreignId("projeto_id")->constrained("projeto")->onDelete("cascade");
             $table->dateTime('colaborador_data_admissao');
+            $table->string('funcao')->nullable();
+
             $table->timestamps();
         });
     }

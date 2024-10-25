@@ -19,6 +19,9 @@ class Projeto extends Model
     public function tarefa(){
         return $this->hasMany(Tarefa::class, 'projeto_id');
     }
+    public function colaborador(){
+        return $this->hasMany(Colaborador::class, "projeto_id");
+    }
 
  
 }

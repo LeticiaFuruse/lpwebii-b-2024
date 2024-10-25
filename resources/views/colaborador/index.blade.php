@@ -22,8 +22,9 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome do usuario Colaborador</th>
+                            <th>Nome do Colaborador</th>
                             <th>Cargo</th>
+                            <th>Função</th>
                             <th>Projeto</th>
                             <th>Data de admissão</th>
                             <th>Opções</th>
@@ -35,9 +36,10 @@
                             <tr>
                                 <td>{{ $linha->id }}</td>
                                 <td>{{ $linha->usuario->usuario_nome }}</td>
-                                <td>{{ $linha->usuario->cargo->cargo_nome }}</td>
+                                <td>{{ $linha->usuario->cargo->cargo_nome }} </td>
+                                <td>{{ $linha->funcao }}</td>
                                 <td>{{ $linha->projeto->projeto_nome }}</td>
-                                <td>{{ $linha->colaborador_data_admissao }}</td>
+                                <td>{{ $linha->created_at }}</td>
                                 <td>
 
                                     <a href="{{ route('colaborador_alterar', ['id'=>$linha->id]) }}" class="btn btn-primary btn-sm">
@@ -72,30 +74,32 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="colaborador_nome">
+                                <select class="form-select" name="usuario_id">
+                                    <option value="">Selecione um colaborador</option>
+                                        @foreach($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->usuario_nome }}</option>
+                                        @endforeach
+                                </select>
                                 <label for="floatingInput">Nome do colaborador</label>
                             </div>
+
                             <div class="form-floating mb-3">
-                                <select class="form-select" aria-label="Default select example" name="cargo_id">
+                                <input type="text" class="form-control" name="funcao">
+                                <label for="floatingInput">Nome da função</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <select class="form-select" aria-label="Default select example" name="projeto_id">
                                     <option value="0">Selecione um projeto</option>
                                     @foreach ($projeto as $item)
                                         <option value="{{ $item->id }}">{{ $item->projeto_nome }}</option>
                                     @endforeach
                                 </select>
+                                <label for="floatingInput">Nome do projeto</label>
                             </div>
                             
-                            <div class="form-floating mb-3">
-                                <select class="form-select" aria-label="Default select example" name="cargo_id">
-                                    <option value="0">Selecione um cargo</option>
-                                    @foreach ($cargo as $item)
-                                        <option value="{{ $item->id }}">{{ $item->cargo_nome }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="date" class="form-control" name="colaboradr_data_admissao">
-                                <label for="floatingInput">Data de admissão</label>
-                            </div>
+                            
+                            
     
                         </div>
                         <div class="modal-footer">
