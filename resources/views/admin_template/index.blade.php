@@ -29,10 +29,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!">Configurações</a></li>
+                        <li><a class="dropdown-item" href="#!">Atividades</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="#!">Sair</a></li>
                     </ul>
                 </li>
             </ul>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logado como:</div>
-                        Usuario nome 
+                        {{ Auth::user()->name }}
                     </div>
                 </nav>
             </div>
@@ -118,14 +118,14 @@
                     @yield("conteudo")
 
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
+                <footer class="py-4 bg-light mt-auto align-items-center">
+                    <div class="container-fluid px-4 align-items-center">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Furuse 2024</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">Politica de privacidade</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="#">Termos &amp; Condições</a>
                             </div>
                         </div>
                     </div>
