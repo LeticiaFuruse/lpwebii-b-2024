@@ -9,14 +9,12 @@ use App\Http\Controllers\projetoController;
 use App\Http\Controllers\tarefaController;
 use App\Http\Controllers\usuarioController;
 // admin
-Route::get("/",  function(){
+Route::get("/",  function () {
     return view("admin_template.register.index");
-    
 });
 // cliente
-Route::get("/cliente",  function(){
+Route::get("/cliente",  function () {
     return view("cliente.register.index");
-    
 });
 
 //rota de register do usuario 
@@ -26,44 +24,47 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin_template', function (){
-         return view("admin_template.index");
+    Route::get('/admin_template', function () {
+        return view("admin_template.index");
     })->name('admin_template');
 
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    // Route::post('/logout', [AuthController::class, 'login']);
+
     //rota que chama o index do CARGO
-    Route::get("/cargo" , [cargoController::class, 'index']);
-    Route::post("/cargo" , [cargoController::class, 'SalvarNovoCargo']);
-    
-    Route::get("/cargo/upd/{id}" , [cargoController::class, 'AlterarCargo'])->name("cargo_alterar");
-    Route::get("/cargo/exc/{id}" , [cargoController::class, 'ExcluirCargo'])->name("cargo_excluir");
-    Route::post("/cargo/upd" , [cargoController::class, 'SalvarAlteracao'])->name("cargo_alt_salva");
-    
+    Route::get("/cargo", [cargoController::class, 'index']);
+    Route::post("/cargo", [cargoController::class, 'SalvarNovoCargo']);
+
+    Route::get("/cargo/upd/{id}", [cargoController::class, 'AlterarCargo'])->name("cargo_alterar");
+    Route::get("/cargo/exc/{id}", [cargoController::class, 'ExcluirCargo'])->name("cargo_excluir");
+    Route::post("/cargo/upd", [cargoController::class, 'SalvarAlteracao'])->name("cargo_alt_salva");
+
 
     //rota para Usuario
     Route::get("/usuario", [usuarioController::class, 'index'])->name("usuario_index");
     Route::post("/usuario", [usuarioController::class, 'SalvarNovoUsuario']);
 
-    Route::get("/usuario/upd/{id}" , [usuarioController::class, 'AlterarUsuario'])->name("usuario_alterar");
-    Route::get("/usuario/exc/{id}" , [usuarioController::class, 'ExcluirUsuario'])->name("usuario_excluir");
-    Route::post("/usuario/upd" , [usuarioController::class, 'SalvarAlteracao'])->name("usuario_alt_salva");
+    Route::get("/usuario/upd/{id}", [usuarioController::class, 'AlterarUsuario'])->name("usuario_alterar");
+    Route::get("/usuario/exc/{id}", [usuarioController::class, 'ExcluirUsuario'])->name("usuario_excluir");
+    Route::post("/usuario/upd", [usuarioController::class, 'SalvarAlteracao'])->name("usuario_alt_salva");
 
 
     //rota Projeto 
     Route::get("/projeto", [projetoController::class, 'index'])->name("projeto_index");
     Route::post("/projeto", [projetoController::class, 'SalvarNovoProjeto']);
 
-    Route::get("/projeto/upd/{id}" , [projetoController::class, 'AlterarProjeto'])->name("projeto_alterar");
-    Route::get("/projeto/exc/{id}" , [projetoController::class, 'ExcluirProjeto'])->name("projeto_excluir");
-    Route::post("/projeto/upd" , [projetoController::class, 'SalvarAlteracao'])->name("projeto_alt_salva");
+    Route::get("/projeto/upd/{id}", [projetoController::class, 'AlterarProjeto'])->name("projeto_alterar");
+    Route::get("/projeto/exc/{id}", [projetoController::class, 'ExcluirProjeto'])->name("projeto_excluir");
+    Route::post("/projeto/upd", [projetoController::class, 'SalvarAlteracao'])->name("projeto_alt_salva");
 
 
     //rota do Metas 
     Route::get("/metas", [metaController::class, 'index'])->name("meta_index");
     Route::post("/metas", [metaController::class, 'SalvarNovaMeta']);
 
-    Route::get("/metas/upd/{id}" , [metaController::class, 'AlterarMeta'])->name("meta_alterar");
-    Route::get("/metas/exc/{id}" , [metaController::class, 'ExcluirMeta'])->name("meta_excluir");
-    Route::post("/metas/upd" , [metaController::class, 'SalvarAlteracao'])->name("meta_alt_salva");
+    Route::get("/metas/upd/{id}", [metaController::class, 'AlterarMeta'])->name("meta_alterar");
+    Route::get("/metas/exc/{id}", [metaController::class, 'ExcluirMeta'])->name("meta_excluir");
+    Route::post("/metas/upd", [metaController::class, 'SalvarAlteracao'])->name("meta_alt_salva");
 
 
     //rota Tarefas 
@@ -81,5 +82,4 @@ Route::middleware('auth')->group(function () {
     Route::get("/colaborador/upd/{id}", [colaboradorController::class, 'AlterarColaborador'])->name("colaborador_alterar");
     Route::get("/colaborador/exc/{id}", [colaboradorController::class, 'ExcluirColaborador'])->name("colaborador_excluir");
     Route::post("/colaborador/upd", [colaboradorController::class, 'SalvarAlteracao'])->name("colaborador_alt_salva");
-
 });

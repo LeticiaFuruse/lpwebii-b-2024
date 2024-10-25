@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="#!">Configurações</a></li>
                         <li><a class="dropdown-item" href="#!">Atividades</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Sair</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Sair</a></li>
                     </ul>
                 </li>
             </ul>

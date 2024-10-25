@@ -60,4 +60,9 @@ class AuthController extends Controller
             'email' => 'As credenciais fornecidas estão incorretas.',
         ]);
     }
+    public function logout(Request $request){
+        Auth::logout();
+
+        return redirect()->route('login')->with('success', 'Logout bem-sucedido!');
+    }
 }
