@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cargos;
 use App\Models\Usuario;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class usuarioController extends Controller
@@ -54,4 +55,5 @@ class usuarioController extends Controller
         $usuario->save();
         return redirect("/usuario");
     }
+
 }

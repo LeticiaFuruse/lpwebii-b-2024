@@ -11,16 +11,13 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    public function showRegisterForm()
-    {
-        return view('cliente.register.index');
+    public function showRegisterForm(){
+        return view('admin_template.register.index');
     }
-    public function showLoginForm()
-    {
-        return view('cliente.login.index');
+    public function showLoginForm(){
+        return view('admin_template.login.index');
     }
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         // Validação dos dados
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -55,7 +52,7 @@ class AuthController extends Controller
             // Login bem-sucedido
             $request->session()->regenerate();
 
-            return redirect('/pagina-inicial')->with('success', 'Login bem-sucedido!');
+            return redirect()->intended('admin_template')->with('success', 'Login bem-sucedido!');
         }
 
         // Se as credenciais estiverem erradas
