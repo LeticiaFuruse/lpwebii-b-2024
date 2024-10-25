@@ -8,8 +8,13 @@ use App\Http\Controllers\metaController;
 use App\Http\Controllers\projetoController;
 use App\Http\Controllers\tarefaController;
 use App\Http\Controllers\usuarioController;
-
+// admin
 Route::get("/",  function(){
+    return view("admin_template.register.index");
+    
+});
+// cliente
+Route::get("/cliente",  function(){
     return view("cliente.register.index");
     
 });
@@ -21,9 +26,9 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/login', function (){
-         return view("cliente.login.index");
-    })->name('login');
+    Route::get('/admin_template', function (){
+         return view("admin_template.index");
+    })->name('admin_template');
 
     //rota que chama o index do CARGO
     Route::get("/cargo" , [cargoController::class, 'index']);
