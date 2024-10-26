@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Projeto Laravel - Cards</title>
+    <title>Nome do projeto - Metas</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Projeto Laravel</div>
+                <div class="sidebar-brand-text mx-3">Painel</div>
             </a>
 
             <!-- Divider -->
@@ -61,14 +61,15 @@
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                     aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Componentes</span>
                 </a>
                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <h6 class="collapse-header">Seus Componentes:</h6>
                         <!-- <a class="collapse-item" href="buttons.html">Buttons</a> -->
-                        <a class="collapse-item active" href="cards.html">Cards</a>
+                        <a class="collapse-item active" href="cards.html">Metas</a>
+                        <a class="collapse-item active" href="tarefa.html">Tarefas</a>
                     </div>
                 </div>
             </li>
@@ -84,9 +85,6 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <!-- <a class="collapse-item" href="utilities-color.html">Colors</a> -->
-                        <!-- <a class="collapse-item" href="utilities-border.html">Borders</a> -->
-                        <!-- <a class="collapse-item" href="utilities-animation.html">Animations</a> -->
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
@@ -361,7 +359,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Cards</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Metas do projeto</h1>
                     </div>
 
                     <div class="row">
@@ -453,18 +451,6 @@
                     <div class="row">
 
                         <div class="col-lg-6">
-
-                            <!-- Default Card Example -->
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    Default Card Example
-                                </div>
-                                <div class="card-body">
-                                    This card uses Bootstrap's default styling with no utility classes added. Global
-                                    styles are the only things modifying the look and feel of this default card example.
-                                </div>
-                            </div>
-
                             <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -486,7 +472,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Nome da meta 1</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -494,35 +480,58 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-header">Configurações:</div>
+                                            <a class="dropdown-item" href="#">Excluir meta</a>
+                                            <a class="dropdown-item" href="#">Editar meta</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item mb-4" href="#">Adicionar colaborador</a>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                    Dropdown menus can be placed in the card header in order to extend the functionality
-                                    of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
-                                    icon in the card header can be clicked on in order to toggle a dropdown menu.
+                                <div class="collapse show" id="collapseCardExample">
+                                    <div class="container mt-4 mb-4">
+                                        <!-- Card de Meta -->
+                                        <div class="card">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title">Nome da Meta 1</h5>
+                                                
+                                                <p class="card-text"><strong>Descrição:</strong> Descrição detalhada da meta a ser atingida.</p>
+                                                <p class="card-text"><strong>Status:</strong> Em Progresso</p>
+                                                <p class="card-text"><strong>Prazo:</strong> 10/11/2024</p>
+                                                <button class="btn btn-primary mt-auto">Adicionar Tarefa</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- Collapsable Card Example -->
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Accordion -->
-                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                                <a href="#collapseCardExample" class="d-block card-header py-3 px-3" data-toggle="collapse"
                                     role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                    <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Nome da meta 2 </h6>
                                 </a>
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse show" id="collapseCardExample">
-                                    <div class="card-body">
-                                        This is a collapsable card example using Bootstrap's built in collapse
-                                        functionality. <strong>Click on the card header</strong> to see the card body
-                                        collapse and expand!
+                                    <div class="container mt-4 mb-4">
+                                        <!-- Card de Meta -->
+                                        <div class="card mb-4">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title">Nome da Meta 2 </h5>
+                                                
+                                                <p class="card-text"><strong>Descrição:</strong> Descrição detalhada da meta a ser atingida.</p>
+                                                <p class="card-text"><strong>Status:</strong> Em Progresso</p>
+                                                <p class="card-text"><strong>Prazo:</strong> 10/11/2024</p>
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <button class="btn btn-primary mx-3">Adicionar Tarefa</button>
+                                                    <button class="btn btn-warning mx-3">Editar Meta</button>
+                                                    <button class="btn btn-danger mx-3">Excluir Meta</button>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -536,6 +545,24 @@
 
             </div>
             <!-- End of Main Content -->
+
+
+            <!-- tabela de metas -->
+            <div class="container mt-4">
+                <h2 class="mb-4">Nome da meta</h2>
+                <!-- Card de Meta -->
+                <div class="card">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Nome da Meta</h5>
+                        <p class="card-text"><strong>Descrição:</strong> Descrição detalhada da meta a ser atingida.</p>
+                        <p class="card-text"><strong>Status:</strong> Em Progresso</p>
+                        <p class="card-text"><strong>Prazo:</strong> 10/11/2024</p>
+                        <button class="btn btn-primary mt-auto">Adicionar Tarefa</button>
+                        
+                    </div>
+                </div>
+            </div>
+        
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
