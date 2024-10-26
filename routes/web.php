@@ -12,6 +12,9 @@ use App\Http\Controllers\usuarioController;
 Route::get("/",  function () {
     return view("admin_template.register.index");
 });
+Route::get("/administrador",  function () {
+    return view("admin_template.index");
+})->name('administrador');
 // cliente
 Route::get("/cliente",  function () {
     return view("cliente.register.index");

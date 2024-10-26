@@ -11,15 +11,18 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'usuario';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'usuario_nome',
+        'usuario_email',
+        'usuario_senha',
+        'cargo_id',
     ];
 
     /**
@@ -28,7 +31,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'usuario_senha',
         'remember_token',
     ];
 
@@ -41,7 +44,17 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'usuario_senha' => 'hashed',
         ];
+    }
+    public function cargo(){
+        return $this->belongsTo(Cargos::class, "cargo_id");
+    }
+
+    public function projeto(){
+        return $this->belongsToMany(Projeto::class, 'usuario_projeto');
+    }
+    public function colaborador(){
+        return $this->belongsTo(Colaborador::class, "usuario_id");
     }
 }

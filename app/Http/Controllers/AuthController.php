@@ -11,25 +11,28 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    public function showRegisterForm(){
+    public function showRegisterForm()
+    {
         return view('admin_template.register.index');
     }
-    public function showLoginForm(){
+    public function showLoginForm()
+    {
         return view('admin_template.login.index');
     }
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         // Validação dos dados
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:usuario,usuario_email',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         // Criação do usuário
         $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'usuario_nome' => $validatedData['name'],
+            'usuario_email' => $validatedData['email'],
+            'usuario_senha' => Hash::make($validatedData['password']),
         ]);
 
         // Autenticar o usuário
@@ -40,27 +43,31 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-
         // Validação dos dados
         $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        // Verificar as credenciais e autenticar o usuário
-        if (Auth::attempt($credentials)) {
-            // Login bem-sucedido
+        // Procurar o usuário no banco usando usu_email
+        $user = User::where('usuario_email', $credentials['email'])->first();
+
+        // Verificar se o usuário existe e se a senha está correta
+        if ($user && Hash::check($credentials['password'], $user->usuario_senha)) {
+            // Autenticar manualmente o usuário
+            Auth::login($user);
             $request->session()->regenerate();
 
-            return redirect()->intended('admin_template')->with('success', 'Login bem-sucedido!');
+            return redirect()->route('administrador')->with('success', 'Login bem-sucedido!');
         }
 
-        // Se as credenciais estiverem erradas
+        // Se as credenciais estiverem incorretas
         return back()->withErrors([
             'email' => 'As credenciais fornecidas estão incorretas.',
         ]);
     }
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
 
         return redirect()->route('login')->with('success', 'Logout bem-sucedido!');
