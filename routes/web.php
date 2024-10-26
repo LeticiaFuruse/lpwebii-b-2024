@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
         return view("admin_template.index");
     })->name('admin_template');
 
+    //logout do admin
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     // Route::post('/logout', [AuthController::class, 'login']);
 
