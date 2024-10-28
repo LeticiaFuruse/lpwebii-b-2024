@@ -95,7 +95,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4 px-3 py-3">
                     <h1 class="h2 mb-0 text-white">Uma superferramenta de produtividade </h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Gerar Relatorio</a>
+                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                 </div>
                 <div class="row px-3 py-3">
                     <!-- Earnings (Monthly) Card Example -->
@@ -105,7 +105,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Lucro (Mês)</div>
+                                            Earnings (Monthly)</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                                     </div>
                                     <div class="col-auto">
@@ -122,7 +122,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Lucro (Anual)</div>
+                                            Earnings (Annual)</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                                     </div>
                                     <div class="col-auto">
@@ -138,7 +138,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tarefas
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
@@ -167,7 +167,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Solicitação pendente</div>
+                                            Pending Requests</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                     </div>
                                     <div class="col-auto">
@@ -189,7 +189,7 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Visão geral das metas</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                                 <div class="dropdown no-arrow">
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -220,7 +220,7 @@
                             <!-- Card Header - Dropdown -->
                             <div
                                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Tarefas</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                                 <div class="dropdown no-arrow">
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -243,10 +243,10 @@
                                 </div>
                                 <div class="mt-4 text-center small">
                                     <span class="mr-2">
-                                        <i class="fas fa-circle text-primary"></i> Concluido
+                                        <i class="fas fa-circle text-primary"></i> Direct
                                     </span>
                                     <span class="mr-2">
-                                        <i class="fas fa-circle text-success"></i> Pendente
+                                        <i class="fas fa-circle text-success"></i> Social
                                     </span>
                                     <span class="mr-2">
                                         <i class="fas fa-circle text-info"></i> Referral
@@ -265,7 +265,7 @@
                         <!-- Project Card Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Projetos</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
                             </div>
                             <div class="card-body">
                                 <h4 class="small font-weight-bold">Server Migration <span

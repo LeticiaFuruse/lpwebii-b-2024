@@ -37,7 +37,11 @@
                                 <td>{{ $linha->usuario_nome }}</td>
                                 <td>{{ $linha->usuario_email }}</td>
                                 <td>{{ $linha->usuario_senha }}</td>
-                                <td>{{ $linha->cargo->cargo_nome }}</td>
+                                <td>
+                                    @if ($linha->cargo_id)
+                                        {{ $linha->cargo->cargo_nome }}
+                                    @endif
+                                </td>
                                 <td>
 
                                     <a href="{{ route('usuario_alterar', ['id'=>$linha->id]) }}" class="btn btn-primary btn-sm">
