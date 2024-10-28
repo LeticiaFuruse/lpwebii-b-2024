@@ -27,6 +27,7 @@ class colaboradorController extends Controller
         $colaborador->usuario_id = $usuario_id;
         $colaborador->projeto_id = $projeto_id;
         $colaborador->funcao = $funcao;
+        $colaborador->colaborador_data_admissao = now();
         $colaborador->save();
 
         return redirect('/colaborador');

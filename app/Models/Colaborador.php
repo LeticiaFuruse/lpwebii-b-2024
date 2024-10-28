@@ -8,8 +8,10 @@ class Colaborador extends Model
 {
     protected $table = "colaborador";
     protected $fillable = ['usuario_id',
-    'projeto_id' ,
-    'colaborador_data_admissao'];
+                            'projeto_id' ,
+                            'funcao',
+                            'colaborador_data_admissao',
+];
     
     public function tarefa(){
         return $this->belongsToMany(Tarefa::class, 'colaborador_tarefa');
