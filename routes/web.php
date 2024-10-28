@@ -17,8 +17,8 @@ Route::get("/administrador",  function () {
 })->name('administrador');
 // cliente
 Route::get("/cliente",  function () {
-    return view("cliente.register.index");
-});
+    return view("cliente.index");
+})->name('cliente');
 
 //rota de register do usuario 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
