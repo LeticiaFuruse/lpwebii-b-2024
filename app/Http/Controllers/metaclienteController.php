@@ -18,6 +18,9 @@ class metaclienteController extends Controller
 
         return view('cliente.metas.index', compact('meta_unica', 'projeto_all', 'projeto_unico'));
     }
+
+
+    
     public function ExcluirMeta($id)
     {
         $meta = Meta::find($id);
