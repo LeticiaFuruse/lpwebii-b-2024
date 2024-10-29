@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Projeto Laravel</div>
+                <div class="sidebar-brand-text mx-3">TaskHub</div>
             </a>
 
             <!-- Divider -->
@@ -52,7 +52,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Seus projetos
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -79,7 +79,7 @@
                             <input type="hidden" name="id" value="{{$item->id}}">
                             <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Tarefas</button>
                         </form>
-                        
+
                             <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Colaboradores</button>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>Projeto de laravel</strong>+ alguma coisa escrita</p>
+                <p class="text-center mb-2"><strong>Projeto feito com laravel </strong>utilizando bootstrape frameworks</p>
                 <!-- <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> -->
             </div>
 
@@ -329,8 +329,10 @@
                                     Sair
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Administrador
+                                    <form action="{{ route('administrador') }}" method="GET">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400" ></i>
+                                        <button class="btn btn-link p-0 text-decoration-none">Administrador</button>
+                                    </form>
                                 </a>
                             </div>
                         </li>

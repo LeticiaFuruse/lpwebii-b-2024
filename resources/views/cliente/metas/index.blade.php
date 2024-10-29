@@ -8,6 +8,9 @@
         <h1 class="h3 mb-0 text-gray-800">Metas do projeto: {{$projeto_unico->projeto_nome}}</h1>
     </div>
 
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary mt-auto mb-3">Criar nova meta</button>
+    </div>
     @foreach ($meta_unica as $itemMeta)
     <div class="row">
         <div class="col-lg-6">
