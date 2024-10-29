@@ -3,9 +3,15 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cargoController;
+use App\Http\Controllers\clienteController;
 use App\Http\Controllers\colaboradorController;
+use App\Http\Controllers\metaclienteController;
 use App\Http\Controllers\metaController;
+use App\Http\Controllers\novoprojetoController;
+use App\Http\Controllers\painelclienteController;
+use App\Http\Controllers\painelController;
 use App\Http\Controllers\projetoController;
+use App\Http\Controllers\tarefaclienteController;
 use App\Http\Controllers\tarefaController;
 use App\Http\Controllers\usuarioController;
 // admin
@@ -15,10 +21,8 @@ Route::get("/",  function () {
 Route::get("/administrador",  function () {
     return view("admin_template.index");
 })->name('administrador');
-// cliente
-Route::get("/cliente",  function () {
-    return view("cliente.index");
-})->name('cliente');
+
+
 
 //rota de register do usuario 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -27,9 +31,61 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin_template', function () {
-        return view("admin_template.index");
-    })->name('admin_template');
+    // index cliente
+    Route::get("/cliente", [clienteController::class, 'index'])->name('cliente');
+    //painel
+    Route::get("/painel", [painelclienteController::class, 'index'])->name('painel-cliente');
+    //meta
+    Route::get("/meta", [metaclienteController::class, 'index'])->name('meta-cliente');
+    Route::get("/meta/exc/{id}", [metaclienteController::class, 'ExcluirMeta'])->name('meta-cliente-excluir');
+    Route::get("/meta/upd/{id}", [metaclienteController::class, 'AlterarMeta'])->name('meta-cliente-alterar');
+    Route::post("/meta/upd/{id}", [metaclienteController::class, 'SalvarAlteracao'])->name("meta-cliente-alt-salva");
+
+    //tarefa 
+    Route::get("/tarefa", [tarefaclienteController::class, 'index'])->name('tarefa-cliente');
+
+    // novo projeto 
+    Route::get("/novo-projeto",  function () {
+        return view("cliente.novo-projeto.index");
+    })->name('novo-projeto');
+    Route::post('/novo-projeto', [novoprojetoController::class, 'index']);
+
+    //  meta cliente 
+    Route::get("/meta-cliente",  function () {
+        return view("cliente.metas.index");
+    });
+
+    //  tarefa cliente
+    Route::get("/tarefa-cliente",  function () {
+        return view("cliente.tarefa.index");
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //logout do admin
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
