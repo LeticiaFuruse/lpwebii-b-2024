@@ -42,7 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::post("/meta/upd/{id}", [metaclienteController::class, 'SalvarAlteracao'])->name("meta-cliente-alt-salva");
 
     //tarefa 
-    Route::get("/tarefa", [tarefaclienteController::class, 'index'])->name('tarefa-cliente');
+    Route::get("/tarefa-cliente", [tarefaclienteController::class, 'index'])->name('tarefa-cliente');
+    Route::get("/tarefa-cliente/exc/{id}", [tarefaclienteController::class, 'ExcluirTarefa'])->name('tarefa-cliente-excluir');
+    Route::get("/tarefa-cliente/upd/{id}", [tarefaclienteController::class, 'AlterarTarefa'])->name('tarefa-cliente-alterar');
+    Route::post("/tarefa-cliente/upd/{id}", [tarefaclienteController::class, 'SalvarAlteracao'])->name("tarefa-cliente-alt-salva");
 
     // novo projeto 
     Route::get("/novo-projeto",  function () {
@@ -55,10 +58,7 @@ Route::middleware('auth')->group(function () {
         return view("cliente.metas.index");
     });
 
-    //  tarefa cliente
-    Route::get("/tarefa-cliente",  function () {
-        return view("cliente.tarefa.index");
-    });
+
 
 
 
