@@ -58,7 +58,7 @@ class AuthController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
-            return redirect()->route('administrador')->with('success', 'Login bem-sucedido!');
+            return redirect()->route('cliente')->with('success', 'Login bem-sucedido!');
         }
 
         // Se as credenciais estiverem incorretas
