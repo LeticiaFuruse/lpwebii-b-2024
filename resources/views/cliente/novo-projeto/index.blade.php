@@ -30,7 +30,7 @@
             </div>
 
             <button class="btn btn-primary btn-user btn-block">
-                Registrar projeto
+                Criar novo projeto
             </button>
 
             <hr>

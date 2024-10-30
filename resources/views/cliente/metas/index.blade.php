@@ -9,7 +9,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <button class="btn btn-primary mt-auto mb-3">Criar nova meta</button>
+        <button class="btn btn-primary mt-auto mb-3" data-toggle="modal" data-target="#modalCriarMeta">Criar nova meta</button>
     </div>
     @foreach ($meta_unica as $itemMeta)
     <div class="row">
@@ -45,8 +45,14 @@
                                 <p class="card-text"><strong>Descrição: </strong>{{$itemMeta->meta_descricao}}</p>
                                 <p class="card-text"><strong>Status: </strong>{{$itemMeta->meta_status}}</p>
                                 <p class="card-text"><strong>Prazo: </strong>{{$itemMeta->meta_prazo}}</p>
-                                <p class="card-text"><strong>Tarefas: </strong> {{ $tarefa_unica->tarefa_titulo }}</p>
-                                <button class="btn btn-primary mt-auto">Adicionar Tarefa</button>
+                                <p class="card-text"><strong>Tarefas: </strong> <br>
+                                    @foreach ($tarefa_unica as $itemTarefa)
+                                    @if ($itemTarefa->meta_id == $itemMeta->id)
+                                    {{ $itemTarefa->tarefa_titulo }} <br>
+                                    @endif
+                                    @endforeach
+                                </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -55,9 +61,8 @@
             </div>
         </div>
     </div>
-    @endforeach
-
-    <!-- Modal -->
+    <!-- Modal ALTERAR-->
+    @if (isset($itemMeta))
     <div class="modal " id="modal{{$itemMeta->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -68,11 +73,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('meta-cliente-alt-salva') }}" method="POST">
+                    <form action="{{ route('meta-cliente-alt-salva')}}" method="POST">
                         @csrf <!-- Sempre colocar quando usar forms -->
-
                         <input type="hidden" name="id" value="{{ $itemMeta->id }}">
-                        <input type="hidden" name="id" value="{{ $itemMeta->projeto_id }}">
+                        <input type="hidden" name="projeto_id" value="{{ $itemMeta->projeto_id }}">
                         <div class="form-floating mb-3">
                             <label for="meta_titulo">Nome da meta</label>
                             <input type="text" class="form-control" name="meta_titulo" value="{{ $itemMeta->meta_titulo }}" required>
@@ -88,7 +92,17 @@
                             <input type="text" class="form-control" name="meta_status" value="{{ $itemMeta->meta_status }}" required>
                         </div>
 
-                        
+                        <label for="floatingInput">Selecione uma tarefa</label>
+                        @foreach ($tarefa_unica as $item)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
+                                name="tarefa_id[]" 
+                                @if ($itemMeta->tarefa->contains($item->id)) checked @endif>
+                            <label class="form-check-label" value="{{ $item->id }}">
+                                {{ $item->tarefa_titulo }}
+                            </label>
+                        </div>
+                        @endforeach
 
                         <div class="form-floating mb-3">
                             <label for="meta_prazo">Data de entrega</label>
@@ -105,6 +119,73 @@
             </div>
         </div>
     </div>
+    @endif
+
+    @endforeach
+    <!-- Modal CRIAR-->
+    <div class="modal " id="modalCriarMeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Criar nova Meta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('meta-cliente-salvar-novo')}}" method="POST">
+                        @csrf <!-- Sempre colocar quando usar forms -->
+                        <input type="hidden" name="id" value="{{ $itemMeta->id }}">
+                        <input type="hidden" name="projeto_id" value="{{ $itemMeta->projeto_id }}">
+                        <div class="form-floating mb-3">
+                            <label for="meta_titulo">Titulo da meta: </label>
+                            <input type="text" class="form-control" name="meta_titulo" required>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="meta_descricao">Descrição</label>
+                            <input type="text" class="form-control" name="meta_descricao" required>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <label for="meta_status">Status</label>
+                            <input type="text" class="form-control" name="meta_status" required>
+                        </div>
+
+                        <label for="floatingInput">Selecione a(s) tarefa(s)</label> <br>
+                        @if ($tarefa_all->isEmpty() || !$tarefa_all->contains('meta_id', null))
+                        <p class="text-gray-600">Não há nenhuma tarefa disponível.</p>
+                        @else
+                        @foreach ($tarefa_all as $item)
+                        @if ($item->meta_id == null)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ $item->id }}"
+                                name="tarefa_id[]">
+                            <label class="form-check-label" value="{{ $item->id }}">
+
+                                {{ $item->tarefa_titulo }}
+                            </label>
+                        </div>
+                        @endif
+                        @endforeach
+                        @endif
+
+                        <div class="form-floating mb-3">
+                            <label for="meta_prazo">Data de entrega</label>
+                            <input type="date" class="form-control" name="meta_prazo" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-success" value="Salvar novo">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!-- /.container-fluid -->
 

@@ -45,8 +45,6 @@
                                 <p class="card-text"><strong>Status:</strong> {{$itemTarefa->tarefa_status}}</p>
                                 <p class="card-text"><strong>Prazo:</strong> {{$itemTarefa->tarefa_data_conclusao}}</p>
                                 <p class="card-text"><strong>Colaborador:</strong> {{$itemTarefa->colaborador_id}}</p>
-
-                                <button class="btn btn-primary mt-auto">Incluir a Meta</button>
                             </div>
                         </div>
                     </div>
