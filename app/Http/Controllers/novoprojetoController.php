@@ -28,4 +28,8 @@ class novoprojetoController extends Controller
         $projeto->usuario()->attach($usuario_id);
         return redirect('/novo-projeto');
     }
+    public function AcessarPagina(){
+        $projeto_all = Projeto::all();
+        return view('cliente.novo-projeto.index', compact('projeto_all'));
+    }
 }

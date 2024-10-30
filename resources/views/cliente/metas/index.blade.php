@@ -45,6 +45,7 @@
                                 <p class="card-text"><strong>Descrição: </strong>{{$itemMeta->meta_descricao}}</p>
                                 <p class="card-text"><strong>Status: </strong>{{$itemMeta->meta_status}}</p>
                                 <p class="card-text"><strong>Prazo: </strong>{{$itemMeta->meta_prazo}}</p>
+                                <p class="card-text"><strong>Tarefas: </strong> {{ $tarefa_unica->tarefa_titulo }}</p>
                                 <button class="btn btn-primary mt-auto">Adicionar Tarefa</button>
                             </div>
                         </div>
@@ -67,10 +68,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('meta-cliente-alt-salva', $itemMeta->id) }}" method="GET">
+                    <form action="{{ route('meta-cliente-alt-salva') }}" method="POST">
                         @csrf <!-- Sempre colocar quando usar forms -->
 
                         <input type="hidden" name="id" value="{{ $itemMeta->id }}">
+                        <input type="hidden" name="id" value="{{ $itemMeta->projeto_id }}">
                         <div class="form-floating mb-3">
                             <label for="meta_titulo">Nome da meta</label>
                             <input type="text" class="form-control" name="meta_titulo" value="{{ $itemMeta->meta_titulo }}" required>
@@ -85,6 +87,8 @@
                             <label for="meta_status">Status</label>
                             <input type="text" class="form-control" name="meta_status" value="{{ $itemMeta->meta_status }}" required>
                         </div>
+
+                        
 
                         <div class="form-floating mb-3">
                             <label for="meta_prazo">Data de entrega</label>

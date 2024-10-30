@@ -15,8 +15,9 @@ class metaclienteController extends Controller
         $meta_unica = Meta::where('projeto_id', $id)->get();
         $projeto_all = Projeto::all();
         $projeto_unico = Projeto::where('id', $id)->first();
+        $tarefa_unica = Tarefa::where('id', $id)->first();
 
-        return view('cliente.metas.index', compact('meta_unica', 'projeto_all', 'projeto_unico'));
+        return view('cliente.metas.index', compact('meta_unica', 'projeto_all', 'projeto_unico', 'tarefa_unica'));
     }
 
 

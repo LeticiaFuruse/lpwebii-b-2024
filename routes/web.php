@@ -23,7 +23,6 @@ Route::get("/administrador",  function () {
 })->name('administrador');
 
 
-
 //rota de register do usuario 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post("/register", [AuthController::class, 'register']);
@@ -39,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/meta", [metaclienteController::class, 'index'])->name('meta-cliente');
     Route::get("/meta/exc/{id}", [metaclienteController::class, 'ExcluirMeta'])->name('meta-cliente-excluir');
     Route::get("/meta/upd/{id}", [metaclienteController::class, 'AlterarMeta'])->name('meta-cliente-alterar');
-    Route::post("/meta/upd/{id}", [metaclienteController::class, 'SalvarAlteracao'])->name("meta-cliente-alt-salva");
+    Route::post("/meta-cliente/upd", [metaclienteController::class, 'SalvarAlteracao'])->name("meta-cliente-alt-salva");
 
     //tarefa 
     Route::get("/tarefa-cliente", [tarefaclienteController::class, 'index'])->name('tarefa-cliente');
@@ -52,6 +51,7 @@ Route::middleware('auth')->group(function () {
         return view("cliente.novo-projeto.index");
     })->name('novo-projeto');
     Route::post('/novo-projeto', [novoprojetoController::class, 'index']);
+    Route::get('/novo-projeto', [novoprojetoController::class, 'AcessarPagina'])->name('novo-projeto');
 
     //  meta cliente 
     Route::get("/meta-cliente",  function () {
