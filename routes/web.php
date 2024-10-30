@@ -39,6 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::get("/meta/exc/{id}", [metaclienteController::class, 'ExcluirMeta'])->name('meta-cliente-excluir');
     Route::get("/meta/upd/{id}", [metaclienteController::class, 'AlterarMeta'])->name('meta-cliente-alterar');
     Route::post("/meta-cliente/upd", [metaclienteController::class, 'SalvarAlteracao'])->name("meta-cliente-alt-salva");
+    Route::post("/meta-cliente-salvar", [metaclienteController::class, 'SalvarNovaMeta'])->name('meta-cliente-salvar-novo');
+    //  meta cliente 
+    Route::get("/meta-cliente",  function () {
+        return view("cliente.metas.index");
+    });
 
     //tarefa 
     Route::get("/tarefa-cliente", [tarefaclienteController::class, 'index'])->name('tarefa-cliente');
@@ -53,10 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-projeto', [novoprojetoController::class, 'index']);
     Route::get('/novo-projeto', [novoprojetoController::class, 'AcessarPagina'])->name('novo-projeto');
 
-    //  meta cliente 
-    Route::get("/meta-cliente",  function () {
-        return view("cliente.metas.index");
-    });
 
 
 

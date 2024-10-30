@@ -15,13 +15,11 @@ class metaclienteController extends Controller
         $meta_unica = Meta::where('projeto_id', $id)->get();
         $projeto_all = Projeto::all();
         $projeto_unico = Projeto::where('id', $id)->first();
-        $tarefa_unica = Tarefa::where('id', $id)->first();
+        $tarefa_unica = Tarefa::with('meta')->get();
+        $tarefa_all = Tarefa::all();
 
-        return view('cliente.metas.index', compact('meta_unica', 'projeto_all', 'projeto_unico', 'tarefa_unica'));
+        return view('cliente.metas.index', compact('meta_unica', 'projeto_all', 'projeto_unico', 'tarefa_unica', 'tarefa_all'));
     }
-
-
-    
     public function ExcluirMeta($id)
     {
         $meta = Meta::find($id);
@@ -45,20 +43,14 @@ class metaclienteController extends Controller
 
     public function SalvarAlteracao(Request $request)
     {
-        // Verifique se a requisição é GET
-        if ($request->isMethod('get')) {
-            // Redirecione para a rota POST com os dados necessários
-            return redirect()->route('meta-cliente-alt-salva', ['id' => $request->input('id')])
-                ->withInput($request->except('_token'));
-        }
-
         // O restante da lógica para a atualização
+        $id = $request->input('id');
         $meta_titulo = $request->input('meta_titulo');
         $meta_descricao = $request->input('meta_descricao');
         $meta_status = $request->input('meta_status');
         $meta_prazo = $request->input('meta_prazo');
+        $tarefa_ids = $request->input('tarefa_id');
         $projeto_id = $request->input('projeto_id');
-        $id = $request->input('id');
 
         $meta = Meta::find($id);
 
@@ -71,9 +63,53 @@ class metaclienteController extends Controller
 
             $meta->save();
 
+            // Atualizar o meta_id nas tarefas associadas
+            foreach ($tarefa_ids as $tarefa_id) {
+                $tarefa = Tarefa::find($tarefa_id);
+                if ($tarefa) {
+                    $tarefa->meta_id = $meta->id; // associa a tarefa à meta
+                    $tarefa->save();
+                }
+            }
+
             return redirect()->route('meta-cliente', ['id' => $projeto_id])->with('success', 'Meta alterada com sucesso!');
         }
 
         return redirect()->back()->with('error', 'Meta não encontrada!');
+    }
+    public function SalvarNovaMeta(Request $request)
+    {
+        // O restante da lógica para a atualização
+
+        $meta_titulo = $request->input('meta_titulo');
+        $meta_descricao = $request->input('meta_descricao');
+        $meta_status = $request->input('meta_status');
+        $meta_prazo = $request->input('meta_prazo');
+        $tarefa_ids = $request->input('tarefa_id');
+        $projeto_id = $request->input('projeto_id');
+
+        $meta = new Meta();
+
+        if ($meta) {
+            $meta->meta_titulo = $meta_titulo;
+            $meta->projeto_id = $projeto_id;
+            $meta->meta_descricao = $meta_descricao;
+            $meta->meta_status = $meta_status;
+            $meta->meta_prazo = $meta_prazo;
+
+            $meta->save();
+
+        if ($tarefa_ids) {
+            // Atualizar o meta_id nas tarefas associadas
+            foreach ($tarefa_ids as $tarefa_id) {
+                $tarefa = Tarefa::find($tarefa_id);
+                if ($tarefa) {
+                    $tarefa->meta_id = $meta->id; // associa a tarefa à meta
+                    $tarefa->save();
+                }
+            }
+        }
+            return redirect()->route('meta-cliente', ['id' => $projeto_id])->with('success', 'Meta alterada com sucesso!');
+        }
     }
 }
