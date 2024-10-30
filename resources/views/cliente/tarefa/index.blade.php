@@ -10,8 +10,8 @@
     <div class="d-flex justify-content-center">
         <button class="btn btn-primary mt-auto mb-3">Criar nova tarefa</button>
     </div>
-    @foreach ($tarefa_unica as $itemTarefa)
     <div class="row">
+        @foreach ($tarefa_unica as $itemTarefa)
         <div class="col-lg-6">
             <!-- Dropdown Card Example -->
             <div class="card shadow mb-4">
@@ -53,8 +53,8 @@
 
         </div>
 
+        @endforeach
     </div>
-    @endforeach
 
 </div>
 <!-- /.container-fluid -->

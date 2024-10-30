@@ -11,8 +11,8 @@
     <div class="d-flex justify-content-center">
         <button class="btn btn-primary mt-auto mb-3" data-toggle="modal" data-target="#modalCriarMeta">Criar nova meta</button>
     </div>
-    @foreach ($meta_unica as $itemMeta)
     <div class="row">
+    @foreach ($meta_unica as $itemMeta)
         <div class="col-lg-6">
             <!-- Dropdown Card Example -->
             <div class="card shadow mb-4">
@@ -45,10 +45,10 @@
                                 <p class="card-text"><strong>Descrição: </strong>{{$itemMeta->meta_descricao}}</p>
                                 <p class="card-text"><strong>Status: </strong>{{$itemMeta->meta_status}}</p>
                                 <p class="card-text"><strong>Prazo: </strong>{{$itemMeta->meta_prazo}}</p>
-                                <p class="card-text"><strong>Tarefas: </strong> <br>
+                                <p class="card-text"><strong>Tarefas: -</strong>
                                     @foreach ($tarefa_unica as $itemTarefa)
                                     @if ($itemTarefa->meta_id == $itemMeta->id)
-                                    {{ $itemTarefa->tarefa_titulo }} <br>
+                                    {{ $itemTarefa->tarefa_titulo }} -
                                     @endif
                                     @endforeach
                                 </p>
@@ -60,7 +60,7 @@
 
             </div>
         </div>
-    </div>
+
     <!-- Modal ALTERAR-->
     @if (isset($itemMeta))
     <div class="modal " id="modal{{$itemMeta->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -122,6 +122,7 @@
     @endif
 
     @endforeach
+    </div>
     <!-- Modal CRIAR-->
     <div class="modal " id="modalCriarMeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
