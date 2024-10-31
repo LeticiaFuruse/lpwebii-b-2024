@@ -1,4 +1,4 @@
-## Projeto Larave - 25/10/2024
+## Projeto Laravel - 25/10/2024
 
 - CRUD
 
