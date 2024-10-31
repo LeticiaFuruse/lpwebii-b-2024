@@ -47,9 +47,9 @@
                                 <p class="card-text"><strong>Prazo:</strong> {{$itemTarefa->tarefa_data_conclusao}}</p>
                                 <p class="card-text"><strong>Colaboradores:</strong>
                                 @foreach ($colaborador_all as $item)
-                                    @if($item->tarefa_id == $itemTarefa->id)
-                                        {{$item->usuario_id}}
-                                    @endif
+                                @if($item->id == $itemTarefa->colaborador_id)
+                                    {{$item->usuario_nome}}
+                                 @endif
                                 @endforeach
                                 </p>
                             </div>

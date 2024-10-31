@@ -20,10 +20,8 @@ class tarefaclienteController extends Controller
         $usuarios = Usuario::with('colaborador')->get();
         $colaborador_unico = Colaborador::with('tarefa')->get();
 
-        $colaborador_all = Colaborador::where('projeto_id', $id)->with('usuario')->get();
+        $colaborador_all = Colaborador::where('projeto_id', $id)->with('usuario', 'tarefa')->get();
         
-
-
         return view('cliente.tarefa.index', compact('tarefa_unica', 'projeto_all', 'projeto_unico', 'colaborador_all' , 'colaborador_unico' , 'usuarios'));
     }
     public function ExcluirTarefa($id){
