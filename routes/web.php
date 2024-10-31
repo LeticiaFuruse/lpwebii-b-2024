@@ -13,6 +13,7 @@ use App\Http\Controllers\painelController;
 use App\Http\Controllers\projetoController;
 use App\Http\Controllers\tarefaclienteController;
 use App\Http\Controllers\tarefaController;
+use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\usuarioController;
 // admin
 Route::get("/",  function () {
@@ -21,6 +22,15 @@ Route::get("/",  function () {
 Route::get("/administrador",  function () {
     return view("admin_template.index");
 })->name('administrador');
+
+
+
+    //telegram 
+    Route::get('/mensagem-cliente', [TelegramController::class, 'index'])->name('mensagem-cliente');
+    Route::post('/enviar-mensagem', [TelegramController::class, 'enviarMensagem'])->name('enviarMensagem');
+
+
+
 
 
 //rota de register do usuario 
@@ -58,11 +68,6 @@ Route::middleware('auth')->group(function () {
     })->name('novo-projeto');
     Route::post('/novo-projeto', [novoprojetoController::class, 'index']);
     Route::get('/novo-projeto', [novoprojetoController::class, 'AcessarPagina'])->name('novo-projeto');
-
-
-
-
-
 
 
 

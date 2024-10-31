@@ -56,7 +56,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-             @foreach($projeto_all as $item)
+            @foreach($projeto_all as $item)
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{$item->id}}"
                     aria-expanded="true" aria-controls="collapse{{$item->id}}">
@@ -69,7 +69,7 @@
                         <h6 class="collapse-header">Informações</h6>
                         <form action="{{route('painel-cliente')}}" method="GET">
                             <input type="hidden" name="id" value="{{$item->id}}">
-                            <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none" >Painel</button>
+                            <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Painel</button>
                         </form>
                         <form action="{{route('meta-cliente')}}" method="GET">
                             <input type="hidden" name="id" value="{{$item->id}}">
@@ -80,7 +80,7 @@
                             <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Tarefas</button>
                         </form>
 
-                            <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Colaboradores</button>
+                        <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Colaboradores</button>
                     </div>
                 </div>
             </li>
@@ -95,18 +95,10 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li> -->
+            <form action="{{route('mensagem-cliente')}}" method="GET">
+                <input type="hidden" name="id" value="{{$item->id}}">
+                <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Chat</button>
+            </form>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -324,7 +316,7 @@
                                     Activity Log
                                 </a> --}}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('logout')}}" >
+                                <a class="dropdown-item" href="{{route('logout')}}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>
@@ -332,7 +324,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Area do administrador
                                 </a>
-                                
+
                             </div>
                         </li>
 
@@ -341,10 +333,10 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                
+
                 <div>
                     @yield('conteudo')
-                    
+
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -406,7 +398,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-    
+
 
 </body>
 
