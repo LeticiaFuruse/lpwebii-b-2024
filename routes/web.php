@@ -37,7 +37,6 @@ Route::middleware('auth')->group(function () {
     //meta
     Route::get("/meta", [metaclienteController::class, 'index'])->name('meta-cliente');
     Route::get("/meta/exc/{id}", [metaclienteController::class, 'ExcluirMeta'])->name('meta-cliente-excluir');
-    Route::get("/meta/upd/{id}", [metaclienteController::class, 'AlterarMeta'])->name('meta-cliente-alterar');
     Route::post("/meta-cliente/upd", [metaclienteController::class, 'SalvarAlteracao'])->name("meta-cliente-alt-salva");
     Route::post("/meta-cliente-salvar", [metaclienteController::class, 'SalvarNovaMeta'])->name('meta-cliente-salvar-novo');
     //  meta cliente 
@@ -49,7 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::get("/tarefa-cliente", [tarefaclienteController::class, 'index'])->name('tarefa-cliente');
     Route::get("/tarefa-cliente/exc/{id}", [tarefaclienteController::class, 'ExcluirTarefa'])->name('tarefa-cliente-excluir');
     Route::get("/tarefa-cliente/upd/{id}", [tarefaclienteController::class, 'AlterarTarefa'])->name('tarefa-cliente-alterar');
-    Route::post("/tarefa-cliente/upd/{id}", [tarefaclienteController::class, 'SalvarAlteracao'])->name("tarefa-cliente-alt-salva");
+    Route::post("/tarefa-cliente", [tarefaclienteController::class, 'SalvarAlteracao'])->name("tarefa-cliente-alt-salva");
+    Route::post("/tarefa-cliente-salvar", [tarefaclienteController::class, 'SalvarNovaTarefa'])->name('tarefa-cliente-salvar-novo');
+
 
     // novo projeto 
     Route::get("/novo-projeto",  function () {

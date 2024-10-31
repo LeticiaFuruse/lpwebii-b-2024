@@ -37,9 +37,8 @@
                         <hr class="dropdown-divider" />
                     </li>
                     <li><a class="dropdown-item" href="{{route('logout')}}">Sair</a></li>
-                    <form action="{{ route('cliente') }}" method="GET">
-                        <button class="dropdown-item" style="border: none; background: none;">Cliente</button>
-                    </form>
+                    <li><a class="dropdown-item" href="{{route('cliente')}}">Cliente</a></li>
+                    
                 </ul>
             </li>
         </ul>
@@ -114,7 +113,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logado como:</div>
-                    {{ Auth::user()->name }}
+                    {{ Auth::user()->usuario_nome }}
                 </div>
             </nav>
         </div>

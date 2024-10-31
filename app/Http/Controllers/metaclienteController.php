@@ -43,7 +43,6 @@ class metaclienteController extends Controller
 
     public function SalvarAlteracao(Request $request)
     {
-        // O restante da lógica para a atualização
         $id = $request->input('id');
         $meta_titulo = $request->input('meta_titulo');
         $meta_descricao = $request->input('meta_descricao');
@@ -79,8 +78,6 @@ class metaclienteController extends Controller
     }
     public function SalvarNovaMeta(Request $request)
     {
-        // O restante da lógica para a atualização
-
         $meta_titulo = $request->input('meta_titulo');
         $meta_descricao = $request->input('meta_descricao');
         $meta_status = $request->input('meta_status');
