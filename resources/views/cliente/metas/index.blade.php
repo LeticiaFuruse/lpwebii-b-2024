@@ -62,7 +62,7 @@
         </div>
 
     <!-- Modal ALTERAR-->
-    @if (isset($itemMeta))
+    @if(isset($itemMeta))
     <div class="modal " id="modal{{$itemMeta->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -136,8 +136,8 @@
                 <div class="modal-body">
                     <form action="{{ route('meta-cliente-salvar-novo')}}" method="POST">
                         @csrf <!-- Sempre colocar quando usar forms -->
-                        <input type="hidden" name="id" value="{{ $itemMeta->id }}">
-                        <input type="hidden" name="projeto_id" value="{{ $itemMeta->projeto_id }}">
+
+                        <input type="hidden" name="projeto_id" value="{{ request('id') }}">
                         <div class="form-floating mb-3">
                             <label for="meta_titulo">Titulo da meta: </label>
                             <input type="text" class="form-control" name="meta_titulo" required>

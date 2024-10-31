@@ -17,12 +17,14 @@ class tarefaclienteController extends Controller
         $tarefa_unica = Tarefa::where('projeto_id', $id)->get();
         $projeto_all = Projeto::all();
         $projeto_unico = Projeto::where('id', $id)->first();
-        
         $usuarios = Usuario::with('colaborador')->get();
-        $colaborador_unico = Colaborador::where('projeto_id', $id)->get();
-        $colaboradores = Colaborador::all();
+        $colaborador_unico = Colaborador::with('tarefa')->get();
 
-        return view('cliente.tarefa.index', compact('tarefa_unica', 'projeto_all', 'projeto_unico' , 'colaborador_unico', 'usuarios' , 'colaboradores'));
+        $colaborador_all = Colaborador::where('projeto_id', $id)->with('usuario')->get();
+        
+
+
+        return view('cliente.tarefa.index', compact('tarefa_unica', 'projeto_all', 'projeto_unico', 'colaborador_all' , 'colaborador_unico' , 'usuarios'));
     }
     public function ExcluirTarefa($id){
         $tarefa = Tarefa::find($id);
