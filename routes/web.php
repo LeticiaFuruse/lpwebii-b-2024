@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cargoController;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\colaboradorController;
+use App\Http\Controllers\colaboradoresController;
 use App\Http\Controllers\metaclienteController;
 use App\Http\Controllers\metaController;
 use App\Http\Controllers\novoprojetoController;
@@ -24,13 +25,9 @@ Route::get("/administrador",  function () {
 })->name('administrador');
 
 
-
-    //telegram 
-    Route::get('/mensagem-cliente', [TelegramController::class, 'index'])->name('mensagem-cliente');
-    Route::post('/enviar-mensagem', [TelegramController::class, 'enviarMensagem'])->name('enviarMensagem');
-
-
-
+//telegram 
+Route::get('/mensagem-cliente', [TelegramController::class, 'index'])->name('mensagem-cliente');
+Route::post('/enviar-mensagem', [TelegramController::class, 'enviarMensagem'])->name('enviarMensagem');
 
 
 //rota de register do usuario 
@@ -61,7 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::post("/tarefa-cliente", [tarefaclienteController::class, 'SalvarAlteracao'])->name("tarefa-cliente-alt-salva");
     Route::post("/tarefa-cliente-salvar", [tarefaclienteController::class, 'SalvarNovaTarefa'])->name('tarefa-cliente-salvar-novo');
 
-
     // novo projeto 
     Route::get("/novo-projeto",  function () {
         return view("cliente.novo-projeto.index");
@@ -69,6 +65,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/novo-projeto', [novoprojetoController::class, 'index']);
     Route::get('/novo-projeto', [novoprojetoController::class, 'AcessarPagina'])->name('novo-projeto');
 
+    //colaboradores cliente
+    Route::get('/colaboradores', [colaboradoresController::class, 'index'])->name('colaboradores.index');
+    
 
 
 
