@@ -7,7 +7,7 @@
     <div id="messages" class="border rounded p-3 mb-4" style="max-height: 400px; overflow-y: auto;">
         @foreach($messages as $message)
             <div class="message mb-2">
-                <strong class="text-primary">User {{$message['user_id']}}:</strong>
+                <strong class="text-primary">User {{$message['user_id']->usuario_nome}}:</strong>
                 <span class="badge badge-light ml-2">{{$message['content']}}</span>
             </div>
         @endforeach
