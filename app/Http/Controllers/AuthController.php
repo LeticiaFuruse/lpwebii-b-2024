@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargos;
 use App\Models\Colaborador;
 use App\Models\Projeto;
 use App\Models\Tarefa;
@@ -83,28 +84,26 @@ class AuthController extends Controller
         $projeto_unico = Projeto::where('id', $id)->first();
         $usuarios = Usuario::with('colaborador')->get();
         $colaborador_unico = Colaborador::with('tarefa')->get();
-        
+        $cargo_all = Cargos::all();
+
         $colaborador_all = Colaborador::where('projeto_id', $id)->with('usuario')->get();
 
         $usuario = Auth::user();
 
-        return view('cliente.perfil.index', compact('usuario' , 'tarefa_unica', 'projeto_all', 'projeto_unico', 'colaborador_all' , 'colaborador_unico' , 'usuarios'));
+        return view('cliente.perfil.index', compact('usuario', 'tarefa_unica', 'projeto_all', 'projeto_unico', 'colaborador_all', 'colaborador_unico', 'usuarios', 'cargo_all'));
     }
     public function atualizarDados(Request $request)
     {
         // Validação dos dados
         $request->validate([
             'usuario_nome' => 'required|string|max:255',
-            'usuario_email' => 'required|string|email|max:255|unique:usuario,usuario_email,',
+            'usuario_email' => 'required|string|email|max:255|unique:usuario,usuario_email,' . $request->input('id'),
             'usuario_senha' => 'nullable|string|min:8',
             'id' => 'required',
-
         ]);
 
-        // Obter o usuário autenticado
-        // $usuario = Auth::user();
+        // Obter o usuário pelo ID fornecido
         $usuario = Usuario::where('id', $request->input('id'))->first();
-
 
         // Atualizar dados do usuário
         $usuario->usuario_nome = $request->usuario_nome;
@@ -116,9 +115,9 @@ class AuthController extends Controller
         }
 
         // Salvar as alterações no banco de dados
-        
         $usuario->save();
 
         return redirect()->route('perfil')->with('success', 'Perfil atualizado com sucesso!');
     }
+    
 }

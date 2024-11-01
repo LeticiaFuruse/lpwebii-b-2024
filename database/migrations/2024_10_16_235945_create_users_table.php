@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('usuario_email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('usuario_senha');
+            $table->boolean('usuario_admin')->nullable()->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

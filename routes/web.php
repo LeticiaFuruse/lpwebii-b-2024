@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cargoController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\colaboradorController;
 use App\Http\Controllers\colaboradoresController;
@@ -73,6 +74,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/perfil-atualizar', [AuthController::class, 'atualizarDados'])->name('usuario.atualizar');
 
 
+    //chat de conversa em grupo 
+    Route::get('/chatFirebase', [ChatController::class, 'index'])->name('chatFirebase.index');
+    Route::post('/chatFirebase', [ChatController::class, 'store'])->name('chat.store');
 
 
 

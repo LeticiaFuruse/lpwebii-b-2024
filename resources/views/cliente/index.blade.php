@@ -107,6 +107,10 @@
                 <input type="hidden" name="id" value="{{ $item->id }}">
                 <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Chat</button>
             </form>
+            <form action="{{ route('chatFirebase.index') }}" method="GET">
+                <input type="hidden" name="id" value="{{ $item->id }}">
+                <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Chat em grupo</button>
+            </form>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
