@@ -829,7 +829,7 @@
                     "dev-master": "1.1.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Fig\\Http\\Message\\": "src/"
@@ -966,7 +966,7 @@
             },
             "time": "2024-05-18T18:05:11+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Firebase\\JWT\\": "src"
@@ -1113,7 +1113,7 @@
             },
             "time": "2024-08-26T18:33:48+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\Auth\\": "src"
@@ -1190,7 +1190,7 @@
                     "entry": "src/ServiceBuilder.php"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\Cloud\\Core\\": "src"
@@ -1208,17 +1208,17 @@
         },
         {
             "name": "google/cloud-storage",
-            "version": "v1.43.1",
-            "version_normalized": "1.43.1.0",
+            "version": "v1.44.0",
+            "version_normalized": "1.44.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-storage.git",
-                "reference": "e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc"
+                "reference": "ebdec855364c1df9e81755e9626e3ff4687263f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc",
-                "reference": "e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/ebdec855364c1df9e81755e9626e3ff4687263f4",
+                "reference": "ebdec855364c1df9e81755e9626e3ff4687263f4",
                 "shasum": ""
             },
             "require": {
@@ -1240,7 +1240,7 @@
                 "google/cloud-pubsub": "May be used to register a topic to receive bucket notifications.",
                 "phpseclib/phpseclib": "May be used in place of OpenSSL for creating signed Cloud Storage URLs. Please require version ^2."
             },
-            "time": "2024-10-05T04:59:14+00:00",
+            "time": "2024-11-01T19:34:13+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -1250,7 +1250,7 @@
                     "entry": "src/StorageClient.php"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\Cloud\\Storage\\": "src"
@@ -1262,7 +1262,7 @@
             ],
             "description": "Cloud Storage Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.43.1"
+                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.44.0"
             },
             "install-path": "../google/cloud-storage"
         },
@@ -1298,7 +1298,7 @@
                     "entry": "README.md"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\Api\\": "src/Api",
@@ -1364,7 +1364,7 @@
             },
             "time": "2024-02-26T19:15:41+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\ApiCore\\": "src",
@@ -1414,7 +1414,7 @@
             },
             "time": "2023-04-24T14:37:29+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Grpc\\Gcp\\": "src/"
@@ -1463,7 +1463,7 @@
                     "target": "googleapis/php-longrunning"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\LongRunning\\": "src/LongRunning",
@@ -1507,7 +1507,7 @@
             },
             "time": "2024-09-18T22:04:15+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Google\\Protobuf\\": "src/Google/Protobuf",
@@ -1620,7 +1620,7 @@
             },
             "time": "2023-08-14T23:57:54+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Grpc\\": "src/lib/"
@@ -2165,7 +2165,7 @@
                     ]
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Telegram\\Bot\\": "src/"
@@ -2285,7 +2285,7 @@
             },
             "time": "2022-04-20T14:14:35+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/Clock.php"
@@ -2372,7 +2372,7 @@
                     "dev-4.x": "4.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Kreait\\Firebase\\": "src/Firebase"
@@ -2457,7 +2457,7 @@
             },
             "time": "2022-08-22T21:31:22+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Firebase\\Auth\\Token\\": "src/Firebase/Auth/Token",
@@ -3134,7 +3134,7 @@
             },
             "time": "2022-12-19T14:38:11+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\Clock\\": "src"
@@ -3208,7 +3208,7 @@
                     "dev-master": "4.0-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\JWT\\": "src"
@@ -3474,7 +3474,7 @@
                     "dev-master": "3.0-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "League\\Event\\": "src/"
@@ -3922,7 +3922,7 @@
                     "dev-master": "2.8-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/JmesPath.php"
@@ -5772,7 +5772,7 @@
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Cache\\": "src/"
@@ -6578,7 +6578,7 @@
             },
             "time": "2024-03-12T16:46:05+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Riverline\\MultiPartParser\\": "src/"
@@ -6633,7 +6633,7 @@
             },
             "time": "2024-08-30T07:09:40+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Rize\\": "src/Rize"
@@ -7657,7 +7657,7 @@
             },
             "time": "2022-11-25T16:15:06+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "StellaMaris\\Clock\\": "src"
@@ -9196,7 +9196,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"

@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'da28b471ba0733fa5fe1b7cbb4348cd8f05137ea',
+        'reference' => '9539770d22d297cd0f237c428cc8842d15b5d8f1',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -176,9 +176,9 @@
             'dev_requirement' => false,
         ),
         'google/cloud-storage' => array(
-            'pretty_version' => 'v1.43.1',
-            'version' => '1.43.1.0',
-            'reference' => 'e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc',
+            'pretty_version' => 'v1.44.0',
+            'version' => '1.44.0.0',
+            'reference' => 'ebdec855364c1df9e81755e9626e3ff4687263f4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../google/cloud-storage',
             'aliases' => array(),
@@ -568,7 +568,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'da28b471ba0733fa5fe1b7cbb4348cd8f05137ea',
+            'reference' => '9539770d22d297cd0f237c428cc8842d15b5d8f1',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1051,8 +1051,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '3.0.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '3.0.0',
             ),
         ),
         'psr/simple-cache' => array(
