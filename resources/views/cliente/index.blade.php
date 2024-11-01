@@ -57,41 +57,41 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             @foreach ($projeto_all as $item)
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                        data-target="#collapse{{ $item->id }}" aria-expanded="true"
-                        aria-controls="collapse{{ $item->id }}">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>{{ $item->projeto_nome }}</span>
-                    </a>
-                    <div id="collapse{{ $item->id }}" class="collapse" aria-labelledby="heading{{ $item->id }}"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <!-- <a class="collapse-item" href="buttons.html">Buttons</a> -->
-                            <h6 class="collapse-header">Informações</h6>
-                            <form action="{{ route('painel-cliente') }}" method="GET">
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <button class="collapse-item btn-sm mb-2"
-                                    style="width: 90%; border:none">Painel</button>
-                            </form>
-                            <form action="{{ route('meta-cliente') }}" method="GET">
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Metas</button>
-                            </form>
-                            <form action="{{ route('tarefa-cliente') }}" method="GET">
-                                <input type="hidden" name="id" value="{{ $item->id }}">
-                                <button class="collapse-item btn-sm mb-2"
-                                    style="width: 90%; border:none">Tarefas</button>
-                            </form>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                    data-target="#collapse{{ $item->id }}" aria-expanded="true"
+                    aria-controls="collapse{{ $item->id }}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>{{ $item->projeto_nome }}</span>
+                </a>
+                <div id="collapse{{ $item->id }}" class="collapse" aria-labelledby="heading{{ $item->id }}"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- <a class="collapse-item" href="buttons.html">Buttons</a> -->
+                        <h6 class="collapse-header">Informações</h6>
+                        <form action="{{ route('painel-cliente') }}" method="GET">
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <button class="collapse-item btn-sm mb-2"
+                                style="width: 90%; border:none">Painel</button>
+                        </form>
+                        <form action="{{ route('meta-cliente') }}" method="GET">
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Metas</button>
+                        </form>
+                        <form action="{{ route('tarefa-cliente') }}" method="GET">
+                            <input type="hidden" name="id" value="{{ $item->id }}">
+                            <button class="collapse-item btn-sm mb-2"
+                                style="width: 90%; border:none">Tarefas</button>
+                        </form>
 
-                            <!-- Formulário para ir à página de colaboradores -->
-                            <form action="{{ route('colaboradores.index') }}" method="GET">
-                                <button class="collapse-item btn-sm mb-2"
-                                    style="width: 90%; border:none">Colaboradores</button>
-                            </form>
-                        </div>
+                        <!-- Formulário para ir à página de colaboradores -->
+                        <form action="{{ route('colaboradores.index') }}" method="GET">
+                            <button class="collapse-item btn-sm mb-2"
+                                style="width: 90%; border:none">Colaboradores</button>
+                        </form>
                     </div>
-                </li>
+                </div>
+            </li>
             @endforeach
 
             <!-- Divider -->
@@ -102,15 +102,15 @@
                 Addons
             </div>
 
-            <!-- Nav Item - Charts -->
-            <form action="{{ route('mensagem-cliente') }}" method="GET">
-                <input type="hidden" name="id" value="{{ $item->id }}">
-                <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Chat</button>
-            </form>
-            <form action="{{ route('chatFirebase.index') }}" method="GET">
-                <input type="hidden" name="id" value="{{ $item->id }}">
-                <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Chat em grupo</button>
-            </form>
+            <!-- Nav Item - Charts - teste 1 do chat bot-->
+            <div class="m-4">
+                <form action="{{ route('chatFirebase.index') }}" method="GET">
+                    @foreach ($projeto_all as $item)
+                    <input type="hidden" name="id" value="{{ $item->id }}">
+                    @endforeach
+                    <button class="collapse-item btn-sm mb-2" style="width: 90%; border:none">Chat em grupo</button>
+                </form>
+            </div>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -128,8 +128,20 @@
                 <!-- <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a> -->
             </div>
 
+
+            <div class="container text-center">
+                <form action="{{ route('mensagem-cliente') }}" method="GET">
+                    @foreach ($projeto_all as $item)
+                    <input type="hidden" name="id" value="{{ $item->id }}">
+                    @endforeach
+                    <button class="btn btn-primary btn-sm" style="width: 90%; border: none;">Ajuda</button>
+                </form>
+            </div>
+
+
         </ul>
         <!-- End of Sidebar -->
+
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -201,7 +213,9 @@
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ route('perfil') }}">
                                     <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                    @foreach ($projeto_all as $item)
                                     <input type="hidden" name="id" value="{{ $item->projeto_id }}">
+                                    @endforeach
 
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
@@ -219,10 +233,12 @@
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
                                 </a>
+                                @if(Auth::user()->usuario_admin == 1)
                                 <a class="dropdown-item" href="{{ route('administrador') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Area do administrador
                                 </a>
+                                @endif
 
                             </div>
                         </li>
@@ -237,6 +253,63 @@
                     @yield('conteudo')
 
                 </div>
+
+                <!-- cards de apresentação -->
+                @if(request()->is('cliente'))
+                <div class="container my-5">
+                    <div class="text-center mb-4">
+                        <h1 class="display-4 font-weight-bold text-primary">Conheça o TaskHub</h1>
+                        <p class="lead text-muted">Plataforma online para o gerenciamento dos seus projetos.</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header py-3 bg-primary text-white">
+                                    <h6 class="m-0 font-weight-bold">Simplicidade e Acessibilidade</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Nosso site foi projetado para ser intuitivo e fácil de usar, permitindo que você encontre o que precisa com apenas alguns cliques. Acesse nosso conteúdo de qualquer dispositivo, a qualquer hora!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header py-3 bg-primary text-white">
+                                    <h6 class="m-0 font-weight-bold">Apoio 24/7</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Nosso suporte está disponível 24 horas por dia, 7 dias por semana. Tire suas dúvidas e resolva problemas rapidamente com nossa equipe especializada!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header py-3 bg-primary text-white">
+                                    <h6 class="m-0 font-weight-bold">Integração Simples</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Integre nossos serviços facilmente com suas ferramentas existentes. Oferecemos APIs e documentação clara para facilitar o processo.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow h-100">
+                                <div class="card-header py-3 bg-primary text-white">
+                                    <h6 class="m-0 font-weight-bold">Segurança e Confiabilidade</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Priorizamos a segurança dos seus dados. Com criptografia avançada e servidores confiáveis, garantimos a proteção das suas informações.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @endif
             </div>
             <!-- End of Main Content -->
 

@@ -2,22 +2,26 @@
 
 @section('conteudo')
 <div class="container mt-5">
-    <h1 class="mb-4">Chat do Projeto</h1>
+    <div class="bg-white rounded shadow-sm p-4">
+        <h1 class="mb-4 text-center">Chat do Projeto</h1>
 
-    <div id="messages" class="border rounded p-3 mb-4" style="max-height: 400px; overflow-y: auto;">
-        @foreach($messages as $message)
-            <div class="message mb-2">
-                <strong class="text-primary">User {{$message['user_id']->usuario_nome}}:</strong>
-                <span class="badge badge-light ml-2">{{$message['content']}}</span>
-            </div>
-        @endforeach
+        <div id="messages" class="border rounded p-3 mb-4" style="max-height: 400px; overflow-y: auto; background-color: #f8f9fa;">
+            @foreach($messages as $message)
+                <div class="message mb-2">
+                    <strong class="text-primary">
+                        {{ isset($usuarios[$message['user_id']]) ? $usuarios[$message['user_id']]->usuario_nome : 'Desconhecido' }}:
+                    </strong>
+                    <span class="badge badge-light ml-2">{{$message['content']}}</span>
+                </div>
+            @endforeach
+        </div>
+
+        <form action="{{ route('chat.store') }}" method="POST" class="d-flex">
+            @csrf
+            <input type="text" name="content" class="form-control mr-2" placeholder="Digite sua mensagem" required style="flex-grow: 1;">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
     </div>
-
-    <form action="{{ route('chat.store') }}" method="POST" class="d-flex">
-        @csrf
-        <input type="text" name="content" class="form-control mr-2" placeholder="Digite sua mensagem" required>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
 </div>
 
 <!-- Scripts do Bootstrap e jQuery -->

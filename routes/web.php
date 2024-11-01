@@ -21,14 +21,6 @@ use App\Http\Controllers\usuarioController;
 Route::get("/",  function () {
     return view("admin_template.register.index");
 });
-Route::get("/administrador",  function () {
-    return view("admin_template.index");
-})->name('administrador');
-
-
-//telegram 
-Route::get('/mensagem-cliente', [TelegramController::class, 'index'])->name('mensagem-cliente');
-Route::post('/enviar-mensagem', [TelegramController::class, 'enviarMensagem'])->name('enviarMensagem');
 
 
 //rota de register do usuario 
@@ -68,7 +60,7 @@ Route::middleware('auth')->group(function () {
 
     //colaboradores cliente
     Route::get('/colaboradores', [colaboradoresController::class, 'index'])->name('colaboradores.index');
-    
+
     //perfil do cliente 
     Route::get('/perfil', [AuthController::class, 'mostrarPerfil'])->name('perfil');
     Route::put('/perfil-atualizar', [AuthController::class, 'atualizarDados'])->name('usuario.atualizar');
@@ -78,30 +70,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/chatFirebase', [ChatController::class, 'index'])->name('chatFirebase.index');
     Route::post('/chatFirebase', [ChatController::class, 'store'])->name('chat.store');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //logout do admin
+    //logout do admin e cliente
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     // Route::post('/logout', [AuthController::class, 'login']);
+
+
+    //telegram 
+    Route::get('/mensagem-cliente', [TelegramController::class, 'index'])->name('mensagem-cliente');
+    Route::post('/enviar-mensagem', [TelegramController::class, 'enviarMensagem'])->name('enviarMensagem');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    //rota do administrador
+    Route::get("/administrador",  function () {
+        return view("admin_template.index");
+    })->name('administrador');
 
     //rota que chama o index do CARGO
     Route::get("/cargo", [cargoController::class, 'index']);
