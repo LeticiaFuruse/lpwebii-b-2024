@@ -52,14 +52,11 @@
                                         <p class="card-text"><strong>Prazo:</strong>{{ $itemTarefa->tarefa_data_conclusao }}
                                         </p>
                                         <p class="card-text"><strong>Colaboradores:</strong>
-                                            @foreach ($colaborador_all as $colaborador)
-                                                <!-- Itera sobre todos os colaboradores -->
-                                                @if ($colaborador->usuario)
-                                                    <!-- Verifica se a relação com o usuário existe -->
-                                                    {{ $colaborador->usuario->usuario_nome }} <br>
-                                                    <!-- Exibe o nome do colaborador -->
-                                                @endif
-                                            @endforeach
+                                        @foreach ($colaborador as $item)
+
+                                            {{ $item->usuario->usuario_nome }}
+
+                                        @endforeach
                                         </p>
                                     </div>
                                 </div>

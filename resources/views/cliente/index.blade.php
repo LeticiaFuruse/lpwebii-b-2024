@@ -86,6 +86,7 @@
 
                         <!-- Formulário para ir à página de colaboradores -->
                         <form action="{{ route('colaboradores.index') }}" method="GET">
+                            <input type="hidden" name="id" value="{{ $item->id }}">
                             <button class="collapse-item btn-sm mb-2"
                                 style="width: 90%; border:none">Colaboradores</button>
                         </form>

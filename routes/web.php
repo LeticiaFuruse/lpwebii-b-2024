@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
 
     //colaboradores cliente
     Route::get('/colaboradores', [colaboradoresController::class, 'index'])->name('colaboradores.index');
+    Route::post('/colaboradores', [colaboradoresController::class, 'SalvarNovoColaborador'])->name('colaborador-salvar-novo');
 
     //perfil do cliente 
     Route::get('/perfil', [AuthController::class, 'mostrarPerfil'])->name('perfil');
