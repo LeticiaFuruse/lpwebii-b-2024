@@ -68,7 +68,9 @@ Route::middleware('auth')->group(function () {
     //colaboradores cliente
     Route::get('/colaboradores', [colaboradoresController::class, 'index'])->name('colaboradores.index');
     
-
+    //perfil do cliente 
+    Route::get('/perfil', [AuthController::class, 'mostrarPerfil'])->name('perfil');
+    Route::put('/perfil-atualizar', [AuthController::class, 'atualizarDados'])->name('usuario.atualizar');
 
 
 

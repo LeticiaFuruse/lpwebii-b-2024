@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Colaborador;
+use App\Models\Projeto;
+use App\Models\Tarefa;
 use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -71,5 +74,51 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect()->route('login')->with('success', 'Logout bem-sucedido!');
+    }
+    public function mostrarPerfil(Request $request)
+    {
+        $id = $request->input("id");
+        $tarefa_unica = Tarefa::where('projeto_id', $id)->get();
+        $projeto_all = Projeto::all();
+        $projeto_unico = Projeto::where('id', $id)->first();
+        $usuarios = Usuario::with('colaborador')->get();
+        $colaborador_unico = Colaborador::with('tarefa')->get();
+        
+        $colaborador_all = Colaborador::where('projeto_id', $id)->with('usuario')->get();
+
+        $usuario = Auth::user();
+
+        return view('cliente.perfil.index', compact('usuario' , 'tarefa_unica', 'projeto_all', 'projeto_unico', 'colaborador_all' , 'colaborador_unico' , 'usuarios'));
+    }
+    public function atualizarDados(Request $request)
+    {
+        // Validação dos dados
+        $request->validate([
+            'usuario_nome' => 'required|string|max:255',
+            'usuario_email' => 'required|string|email|max:255|unique:usuario,usuario_email,',
+            'usuario_senha' => 'nullable|string|min:8',
+            'id' => 'required',
+
+        ]);
+
+        // Obter o usuário autenticado
+        // $usuario = Auth::user();
+        $usuario = Usuario::where('id', $request->input('id'))->first();
+
+
+        // Atualizar dados do usuário
+        $usuario->usuario_nome = $request->usuario_nome;
+        $usuario->usuario_email = $request->usuario_email;
+
+        // Atualizar a senha se foi fornecida
+        if ($request->filled('usuario_senha')) {
+            $usuario->usuario_senha = Hash::make($request->usuario_senha);
+        }
+
+        // Salvar as alterações no banco de dados
+        
+        $usuario->save();
+
+        return redirect()->route('perfil')->with('success', 'Perfil atualizado com sucesso!');
     }
 }
