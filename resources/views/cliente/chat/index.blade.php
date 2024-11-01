@@ -24,6 +24,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Enviar Mensagem</button>
             </form>
+            <p><strong> Para acessar o chat: @GrupoTaskHub</strong></p>
         </div>
     </div>
 </div>

@@ -7,12 +7,16 @@
 
         <div id="messages" class="border rounded p-3 mb-4" style="max-height: 400px; overflow-y: auto; background-color: #f8f9fa;">
             @foreach($messages as $message)
-                <div class="message mb-2">
-                    <strong class="text-primary">
-                        {{ isset($usuarios[$message['user_id']]) ? $usuarios[$message['user_id']]->usuario_nome : 'Desconhecido' }}:
-                    </strong>
-                    <span class="badge badge-light ml-2">{{$message['content']}}</span>
-                </div>
+            <div class="message mb-2">
+                <strong class="text-primary">
+                    {{ $message['user_id'] == Auth::user()->id 
+                    ? Auth::user()->usuario_nome 
+                        : (isset($usuarios[$message['user_id']]) ? $usuarios[$message['user_id']]->usuario_nome : 'Desconhecido') 
+                    }}
+
+                </strong>
+                <span class="badge badge-light ml-2">{{$message['content']}}</span>
+            </div>
             @endforeach
         </div>
 

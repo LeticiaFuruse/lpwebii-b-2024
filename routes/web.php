@@ -23,6 +23,11 @@ Route::get("/",  function () {
 });
 
 
+    //chat de conversa em grupo 
+    Route::get('/chatFirebase', [ChatController::class, 'index'])->name('chatFirebase.index');
+    Route::post('/chatFirebase', [ChatController::class, 'store'])->name('chat.store');
+
+
 //rota de register do usuario 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post("/register", [AuthController::class, 'register']);
@@ -67,9 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/perfil-atualizar', [AuthController::class, 'atualizarDados'])->name('usuario.atualizar');
 
 
-    //chat de conversa em grupo 
-    Route::get('/chatFirebase', [ChatController::class, 'index'])->name('chatFirebase.index');
-    Route::post('/chatFirebase', [ChatController::class, 'store'])->name('chat.store');
 
     //logout do admin e cliente
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
